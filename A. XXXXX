@@ -32,13 +32,13 @@ public class XXXXX {
             
             if( left==-1 && a[i]%x!=0 ){
                 
-                left=i;
+                left=i+1;
                 
             }
             
-            if( right==-1 && a[i]%x!=0 ){
+            if(  a[i]%x!=0 ){
                 
-                right=i;
+                right=i+1;
                 
             }
             
@@ -52,17 +52,17 @@ public class XXXXX {
            
            if( sum%x!=0 ){
                
-               System.out.println(n);
+               System.out.println(n/*+" frim first if elese"*/);
                
            }else{
                
-               if( left>n-right+1 ){
+               if( left>n - right + 1 ){
                
-               System.out.println( ( n-(n-right+1) ) );
+               System.out.println( ( n-(n-right+1) )/*+" from second if"*/ );
                
                }else{
                    
-                   System.out.println( (n-1) );
+                   System.out.println( (n - left)/*+" from last else"*/ );
                    
                }
                
@@ -85,3 +85,10 @@ public class XXXXX {
     }
     
 }
+/*3
+3 3
+1 2 3
+3 4
+1 2 3
+2 2
+0 6*/
