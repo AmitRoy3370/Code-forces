@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class XXXXX {
+    
+    static Scanner scanner=new Scanner(System.in);
+    
+    static int testCases,n;
+    
+    static long x;
+    
+    static void solve(){
+        
+        n=scanner.nextInt();
+        
+        x=scanner.nextLong();
+        
+        long a[]=new long[n];
+        
+        long sum=0,flag=0,left=-1,right=-1;
+        
+        for(int i=0;i<n;i++){
+            
+            a[i]=scanner.nextLong();
+            
+            if( a[i]%x!=0 ){
+                
+                flag=1;
+                
+            }
+            
+            sum+=a[i];
+            
+            if( left==-1 && a[i]%x!=0 ){
+                
+                left=i;
+                
+            }
+            
+            if( right==-1 && a[i]%x!=0 ){
+                
+                right=i;
+                
+            }
+            
+        }
+        
+       if( flag==0 ){
+           
+           System.out.println("-1");
+           
+       }else{
+           
+           if( sum%x!=0 ){
+               
+               System.out.println(n);
+               
+           }else{
+               
+               if( left>n-right+1 ){
+               
+               System.out.println( ( n-(n-right+1) ) );
+               
+               }else{
+                   
+                   System.out.println( (n-1) );
+                   
+               }
+               
+           }
+           
+       }
+        
+    }
+    
+    public static void main(String[] args) {
+        
+        testCases=scanner.nextInt();
+        
+        for(int i=0;i<testCases;i++){
+            
+        solve();    
+            
+        }
+        
+    }
+    
+}
