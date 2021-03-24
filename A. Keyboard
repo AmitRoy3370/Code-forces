@@ -1,0 +1,399 @@
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class A_Keyboard {
+
+    static Scanner in=new Scanner();
+    
+    static PrintWriter out=new PrintWriter(System.out);
+    
+    static boolean allCaps=false,nextCaps=false;
+    
+    static int numberA=0,numberZ=0;
+    
+    static String[] ch={"b","c","d","e","f","g","h","i","j","k","l",
+    "m","n","o","p","q","r","s","t","u","v","w","x","y","<",";",",","[","]",".","/"};
+    
+    public static void main(String[] args) throws IOException {
+        
+        Map<String,String> right=new HashMap<>();
+        
+        Map<String,String> left=new HashMap<>();
+        
+        for (String ch1 : ch) {
+            if (null != ch1) {
+                switch (ch1) {
+                    case "b":
+                        right.put(ch1, "v");
+                        break;
+                    case "c":
+                        right.put(ch1, "x");
+                        break;
+                    case "d":
+                        right.put(ch1, "s");
+                        break;
+                    case "e":
+                        right.put(ch1, "w");
+                        break;
+                    case "f":
+                        right.put(ch1, "d");
+                        break;
+                    case "g":
+                        right.put(ch1, "f");
+                        break;
+                    case "h":
+                        right.put(ch1, "g");
+                        break;
+                    case "i":
+                        right.put(ch1, "u");
+                        break;
+                    case "j":
+                        right.put(ch1, "h");
+                        break;
+                    case "k":
+                        right.put(ch1, "j");
+                        break;
+                    case "l":
+                        right.put(ch1, "k");
+                        break;
+                    case "m":
+                        right.put(ch1, "n");
+                        break;
+                    case "n":
+                        right.put(ch1, "b");
+                        break;
+                    case "o":
+                        right.put(ch1, "i");
+                        break;
+                    case "p":
+                        right.put(ch1, "o");
+                        break;
+                    case "q":
+                        right.put(ch1, "   ");
+                        break;
+                    case "r":
+                        right.put(ch1, "e");
+                        break;
+                    case "s":
+                        right.put(ch1, "a");
+                        break;
+                    case "t":
+                        right.put(ch1, "r");
+                        break;
+                    case "u":
+                        right.put(ch1, "y");
+                        break;
+                    case "v":
+                        right.put(ch1, "c");
+                        break;
+                    case "w":
+                        right.put(ch1, "q");
+                        break;
+                    case "x":
+                        right.put(ch1, "z");
+                        break;
+                    case "y":
+                        right.put(ch1, "t");
+                        break;
+                    case ";":
+                        right.put(ch1, "l");
+                        break;
+                    case "[":
+                        right.put(ch1, "p");
+                        break;
+                    case "]":
+                        right.put(ch1, "[");
+                        break;
+                    case "<":
+                        right.put(ch1, "m");
+                        break;
+                    case ">":
+                        right.put(ch1, "<");
+                        break;
+                        
+                    case ",":
+                        
+                        right.put(ch1, "m");
+                        
+                        break;
+                        
+                    case ".":
+                        
+                        right.put(ch1, ",");
+                        
+                        break;
+                        
+                    case "/":
+                        
+                        right.put(ch1, ".");
+                        
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+        }
+        
+        for (String ch1 : ch) {
+            if (null != ch1) {
+                switch (ch1) {
+                    case "b":
+                        left.put(ch1, "n");
+                        break;
+                    case "c":
+                        left.put(ch1, "v");
+                        break;
+                    case "d":
+                        left.put(ch1, "f");
+                        break;
+                    case "e":
+                        left.put(ch1, "r");
+                        break;
+                    case "f":
+                        left.put(ch1, "g");
+                        break;
+                    case "g":
+                        left.put(ch1, "h");
+                        break;
+                    case "h":
+                        left.put(ch1, "j");
+                        break;
+                    case "i":
+                        left.put(ch1, "o");
+                        break;
+                    case "j":
+                        left.put(ch1, "k");
+                        break;
+                    case "k":
+                        left.put(ch1, "l");
+                        break;
+                    case "l":
+                        left.put(ch1, ";");
+                        break;
+                    case "m":
+                        left.put(ch1, ",");
+                        break;
+                    case "n":
+                        left.put(ch1, "m");
+                        break;
+                    case "o":
+                        left.put(ch1, "p");
+                        break;
+                    case "p":
+                        left.put(ch1, "[");
+                        break;
+                    case "q":
+                        left.put(ch1, "w");
+                        break;
+                    case "r":
+                        left.put(ch1, "t");
+                        break;
+                    case "s":
+                        left.put(ch1, "d");
+                        break;
+                    case "t":
+                        left.put(ch1, "y");
+                        break;
+                    case "u":
+                        left.put(ch1, "i");
+                        break;
+                    case "v":
+                        left.put(ch1, "b");
+                        break;
+                    case "w":
+                        left.put(ch1, "e");
+                        break;
+                    case "x":
+                        left.put(ch1, "c");
+                        break;
+                    case "y":
+                        left.put(ch1, "u");
+                        break;
+                    case ";":
+                        left.put(ch1, "'");
+                        break;
+                    case "[":
+                        left.put(ch1, "]");
+                        break;
+                    case "]":
+                        left.put(ch1, "|");
+                        break;
+                    case "<":
+                        left.put(ch1, ">");
+                        break;
+                    case ">":
+                        left.put(ch1, "/");
+                        break;
+                        
+                    case ",":
+                        
+                        left.put(ch1, ".");
+                        
+                        break;
+                        
+                    case ".":
+                        
+                        left.put(ch1, "/");
+                        
+                        break;
+                        
+                        
+                    default:
+                        break;
+                }
+            }
+        }
+        
+        left.put("a", "s");
+        left.put("z", "x");
+        
+        //int testCases=in.nextInt();
+        
+        //for(int t=0;t<testCases;t++){
+        
+        String sight=in.next().toLowerCase();
+        String s=in.next().toLowerCase();
+        
+        if( sight.equalsIgnoreCase("r") ){
+            
+         char c[]=s.toCharArray();
+         
+         StringBuilder ans=new StringBuilder();
+         
+         for(char i: c){
+             
+             if( numberZ==1 ){
+                 
+                  ans.append( right.get( String.valueOf(i) ).toUpperCase() );
+                 
+             }
+             
+             if( i=='a' ){
+                 
+                 numberA++;
+                 
+             }
+             
+             if( numberA%2==0 ){
+                 
+                 ans.append( right.get( String.valueOf(i) ) );
+                 
+             }else{
+                 
+                  ans.append( right.get( String.valueOf(i) ).toUpperCase() );
+                 
+             }
+             
+             if( i=='z' ){
+                 
+                 numberZ++;
+                 
+             }
+             
+         }
+        
+         out.print(ans.toString());
+         
+         out.flush();
+         
+        }else{
+            
+             char c[]=s.toCharArray();
+         
+         StringBuilder ans=new StringBuilder();
+         
+         for(char i: c){
+             
+             /*if( numberZ==1 ){
+                 
+                  ans.append( left.get( String.valueOf(i) ).toUpperCase() );
+            
+                  numberZ--;
+                  
+             }*/
+             
+             /*if( i=='a' ){
+                 
+                 numberA++;
+                 
+             }*/
+             
+            // if( numberA%2==0 ){
+                 
+                 ans.append( left.get( String.valueOf(i) ) );
+                 
+             /*}else{
+                 
+                  ans.append( left.get( String.valueOf(i) ).toUpperCase() );
+                 
+             }*/
+             
+             /*if( i=='z' ){
+                 
+                 numberZ++;
+                 
+             }*/
+             
+         }
+        
+         out.println(ans.toString());
+         
+         out.flush();
+            
+        }
+        
+        //}
+        
+    }
+    
+     static class Scanner{
+        
+        BufferedReader in;
+        StringTokenizer st;
+
+        public Scanner() {
+        
+            in=new BufferedReader( new InputStreamReader(System.in) );
+            
+        }
+        
+        String next() throws IOException{
+            
+            while( st==null || !st.hasMoreElements() ){
+                
+                st=new StringTokenizer(in.readLine());
+                
+            }
+            
+            return st.nextToken();
+            
+        }
+        
+        int nextInt() throws IOException{
+            
+            return Integer.parseInt( next() );
+            
+        }
+        
+        long nextLong() throws IOException{
+            
+            return Long.parseLong( next() );
+            
+        }
+        
+    }
+    
+}
+/*
+
+R
+s;;upimrrfod;pbr
+
+*/
