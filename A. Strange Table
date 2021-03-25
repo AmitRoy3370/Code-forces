@@ -1,0 +1,117 @@
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+
+import java.util.StringTokenizer;
+
+public class A_Strange_Table {
+
+    static Scanner in=new Scanner();
+    
+    static PrintWriter out=new PrintWriter(System.out);
+    
+    static int testCases;
+    
+    static long n,m;
+    
+    static long x;
+    
+    static void solve(){
+        
+        //long mat[][]=new long[n][m];
+        
+      long a1=(x+n-1)/n;
+    
+      long a2=(x-1)%n;
+      
+      out.println( ( a2*m+a1 ) );
+      
+      out.flush();
+      
+    }
+    
+    public static void main(String[] args) throws IOException {
+        
+        testCases=in.nextInt();
+        
+        for(int t=0;t<testCases;t++){
+            
+            n=in.nextInt();
+            m=in.nextInt();
+            x=in.nextLong();
+            
+            solve();
+            
+        }
+        
+    }
+    
+     static class Scanner{
+        
+        BufferedReader in;
+        StringTokenizer st;
+
+        public Scanner() {
+        
+            in=new BufferedReader( new InputStreamReader(System.in) );
+            
+        }
+        
+        String next() throws IOException{
+            
+            while( st==null || !st.hasMoreElements() ){
+                
+                st=new StringTokenizer(in.readLine() );
+                
+            }
+            
+            return st.nextToken();
+            
+        }
+        
+        int nextInt() throws IOException{
+            
+            return Integer.parseInt( next() );
+            
+        }
+    
+        long nextLong() throws IOException{
+            
+            return Long.parseLong( next() );
+            
+        }
+        
+        String nextLine() throws IOException{
+            
+            return in.readLine();
+            
+        }
+        
+        double nextDouble() throws IOException{
+            
+            return Double.parseDouble( next() );
+            
+        }
+        
+    }
+    
+}
+/*
+
+1
+3 5 11
+
+*/
+
+/*
+
+5
+1 1 1
+2 2 3
+3 5 11
+100 100 7312
+1000000 1000000 1000000000000
+
+*/
