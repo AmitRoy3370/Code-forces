@@ -1,0 +1,37 @@
+import java.util.*;
+import java.io.*;
+ 
+public class check {
+	static boolean isp(String s) {
+		StringBuilder sb=new StringBuilder(s);
+		
+		StringBuilder sb2=new StringBuilder(s);
+		sb2.reverse();
+		if(sb.toString().equals(sb2.toString()))return true;
+		return false;
+	}
+	public static void main(String[] args) throws IOException {
+		
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		int t=Integer.parseInt(br.readLine());
+		while(t-->0) {
+			String s=br.readLine();
+			
+			int cnt=0;
+			for(int i=0;i<s.length();i++) {
+				if(s.charAt(i)!='a') {cnt++;break;}
+			}
+			if(cnt==0)System.out.println("NO");
+			else {
+				System.out.println("YES");
+				String a=s+'a';
+				String b='a'+s;
+				if(isp(a))System.out.println(b);
+				else System.out.println(a);
+				
+				
+			}
+		}
+	}
+ 
+}
