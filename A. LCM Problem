@@ -1,0 +1,42 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+//T. LCM problem
+
+import java.util.Scanner;
+
+public class Main
+{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int testCases,l,r;
+    
+	public static void main(String[] amit) {
+		
+		testCases=in.nextInt();
+		
+		for(int t=0;t<testCases;t++){
+		    
+		l=in.nextInt();
+		r=in.nextInt();
+		    
+		    if( 2*l>r ){
+		        
+		        System.out.println((-1)+" "+(-1) );
+		        
+		    }else{
+		        
+		        System.out.println(l+" "+(l*2) );
+		        
+		    }
+		    
+		}
+		
+	}
+}
