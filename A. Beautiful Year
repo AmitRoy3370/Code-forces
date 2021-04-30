@@ -1,0 +1,51 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+import java.util.Scanner;
+import java.util.Set;
+import java.util.HashSet;
+
+public class Main
+{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int n;
+    
+    static boolean distinict(int n){
+        
+        Set<Integer> set=new HashSet<>();
+        
+        char ch[]=String.valueOf(n).toCharArray();
+        
+        for(char i: ch){
+            
+            set.add( Integer.parseInt( String.valueOf( i ) ) );
+            
+        }
+        
+        return set.size()==ch.length;
+        
+    }
+    
+	public static void main(String[] args) {
+		
+		n=in.nextInt();
+		
+		int ans=n+1;
+		
+		while( !distinict(ans) ){
+		    
+		    ans++;
+		  
+		}
+		
+		System.out.println(ans);
+		
+	}
+}
