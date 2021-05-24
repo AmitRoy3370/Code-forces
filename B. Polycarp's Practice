@@ -1,0 +1,400 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+import java.util.List;
+import java.util.ArrayList;
+
+public class B_Polycarp_s_Practice{
+	
+	static Scanner in=new Scanner();
+    
+    static PrintWriter out=new PrintWriter(System.out);
+	
+	static int n,k;
+	
+	static elements a[];
+	
+	static elements b[];
+	
+	static class elements{
+		
+		int ai,i;
+		
+		public elements(int ai,int i){
+			
+			this.ai=ai;
+			this.i=i;
+			
+		}
+		
+		public elements(){
+			
+			
+		}
+		
+	}
+	
+	static void merge(elements arr[],int left,int right,int mid){
+		
+		int n1=mid-left+1,n2=right-mid;
+		
+		elements L[]=new elements[n1];
+		
+		elements R[]=new elements[n2];
+		
+		for(int i=0;i<n1;i++){
+			
+			L[i]=new elements();
+			
+		}
+		
+		for(int i=0;i<n2;i++){
+			
+			R[i]=new elements();
+			
+		}
+		
+		for(int i=0;i<n1;i++){
+			
+			L[i]=new elements(arr[left+i].ai,arr[left+i].i);
+			
+		}
+		
+		for(int i=0;i<n2;i++){
+			
+			R[i]=new elements(arr[mid+1+i].ai,arr[mid+i+1].i);
+			
+		}
+		
+		int i=0,j=0,k=left;
+		
+		while(i<n1 && j<n2){
+			
+			if(L[i].ai<=R[j].ai){
+				
+				//arr[k].ai=R[j].ai;
+				//arr[k].i=R[j].i;
+				
+				arr[k]=new elements( R[j].ai,R[j].i );
+				
+				j++;
+				
+			}else{
+				
+			//	arr[k].ai=L[i].ai;
+				//arr[k].i=L[i].i;
+				
+				arr[k]=new elements(L[i].ai,L[i].i);
+				
+				i++;
+				
+			}
+			
+			k++;
+			
+		}
+		
+		while(i<n1){
+			
+			//arr[k].ai=L[i].ai;
+			//arr[k].ai=L[i].i;
+			
+			arr[k]=new elements( L[i].ai,L[i].i );
+			
+			i++;
+			k++;
+			
+		}
+		
+		while(j<n2){
+			
+			//arr[k].ai=R[j].ai;
+			//arr[k].i=R[j].i;
+			
+			arr[k]=new elements( R[j].ai,R[j].i );
+			
+			j++;
+			k++;
+			
+		}
+		
+	}
+	
+	static void sort(elements arr[],int left,int right){
+		
+		if(left>=right){
+			
+			return;
+			
+		}
+		
+		int mid=(left+right)/2;
+		
+		sort(arr,left,mid);
+		sort(arr,mid+1,right);
+		
+		merge(arr,left,right,mid);
+		
+	}
+	
+	static void merge1(elements arr[],int left,int right,int mid){
+		
+		int n1=mid-left+1,n2=right-mid;
+		
+		elements L[]=new elements[n1];
+		
+		elements R[]=new elements[n2];
+		
+		for(int i=0;i<n1;i++){
+			
+			L[i]=new elements();
+			
+		}
+		
+		for(int i=0;i<n2;i++){
+			
+			R[i]=new elements();
+			
+		}
+		
+		for(int i=0;i<n1;i++){
+			
+			L[i]=new elements(arr[left+i].ai,arr[left+i].i);
+			
+		}
+		
+		for(int i=0;i<n2;i++){
+			
+			R[i]=new elements(arr[mid+1+i].ai,arr[mid+i+1].i);
+			
+		}
+		
+		int i=0,j=0,k=left;
+		
+		while(i<n1 && j<n2){
+			
+			if(L[i].i>=R[j].i){
+				
+				//arr[k].ai=R[j].ai;
+				//arr[k].i=R[j].i;
+				
+				arr[k]=new elements( R[j].ai,R[j].i );
+				
+				j++;
+				
+			}else{
+				
+			//	arr[k].ai=L[i].ai;
+				//arr[k].i=L[i].i;
+				
+				arr[k]=new elements(L[i].ai,L[i].i);
+				
+				i++;
+				
+			}
+			
+			k++;
+			
+		}
+		
+		while(i<n1){
+			
+			//arr[k].ai=L[i].ai;
+			//arr[k].ai=L[i].i;
+			
+			arr[k]=new elements( L[i].ai,L[i].i );
+			
+			i++;
+			k++;
+			
+		}
+		
+		while(j<n2){
+			
+			//arr[k].ai=R[j].ai;
+			//arr[k].i=R[j].i;
+			
+			arr[k]=new elements( R[j].ai,R[j].i );
+			
+			j++;
+			k++;
+			
+		}
+		
+	}
+	
+	static void sort1(elements arr[],int left,int right){
+		
+		if(left>=right){
+			
+			return;
+			
+		}
+		
+		int mid=(left+right)/2;
+		
+		sort1(arr,left,mid);
+		sort1(arr,mid+1,right);
+		
+		merge1(arr,left,right,mid);
+		
+	}
+	
+	public static void main(String[] amit) throws IOException{
+		
+		n=in.nextInt();
+		k=in.nextInt();
+		
+		a=new elements[n];
+
+b=new elements[n];
+		
+		for(int i=0;i<n;i++){
+			
+			a[i]=new elements( in.nextInt(),i+0 );
+		
+b[i]=new elements( a[i].ai,a[i].i );
+		
+		}
+		
+		if(k==1){
+			
+	//		out.println( 1+"\n"+n );
+	//		out.flush();
+			
+	//		return;
+			
+		}
+		
+		sort(a,0,n-1);
+		
+		int sum=0;
+		
+		elements t[]=new elements[k];
+		
+		for(int i=0;i<k;i++){
+			
+			sum+=a[i].ai;
+			
+			b[a[i].i].i=-1;
+			
+			t[i]=new elements( a[i].ai,a[i].i );
+			
+		}
+		
+		sort1(t,0,k-1);
+		
+		List<Integer> list=new ArrayList<>();
+		
+		for(int i=n-1;i>=0;i--){
+			
+			if( b[i].i==-1 ){
+				
+				b[i].i=0;
+				break;
+				
+			}
+			
+		}
+		
+		b[n-1].i=-1;
+		
+		int count=0;
+		
+		for(int i=0;i<n;i++){
+			
+			count++;
+			
+			if(b[i].i==-1){
+				
+				//out.print(count+" ");
+				//out.flush();
+				
+				list.add(count);
+				
+				count=0;
+				
+			}
+			
+		}
+		
+		//list.add( (int)Math.abs( t[0].i-1 ) );
+		
+		/*int sum1=0;
+		
+		for(int i=1;i<k;i++){
+			
+			list.add( (int)Math.abs( (t[i].i-t[i-1].i)+0 ) );
+			
+			sum1+=(int)Math.abs( (t[i].i-t[i-1].i)+0 );
+			
+		}
+		
+		list.add( (int)Math.abs(n-sum1) );*/
+		
+		out.println(sum);
+		out.flush();
+		
+		for(int i: list){
+			
+			out.print(i+" " );
+			out.flush();
+			
+		}
+		
+	}
+	
+	static class Scanner{
+        
+        BufferedReader in;
+        StringTokenizer st;
+
+        public Scanner() {
+        
+            in=new BufferedReader( new InputStreamReader(System.in) );
+            
+        }
+        
+        String next() throws IOException{
+            
+            while( st==null || !st.hasMoreElements() ){
+                
+                st=new StringTokenizer(in.readLine() );
+                
+            }
+            
+            return st.nextToken();
+            
+        }
+        
+        int nextInt() throws IOException{
+            
+            return Integer.parseInt( next() );
+            
+        }
+    
+        long nextLong() throws IOException{
+            
+            return Long.parseLong( next() );
+            
+        }
+        
+        String nextLine() throws IOException{
+            
+            return in.readLine();
+            
+        }
+        
+        double nextDouble() throws IOException{
+            
+            return Double.parseDouble( next() );
+            
+        }
+        
+    }
+	
+}
