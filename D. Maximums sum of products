@@ -1,0 +1,45 @@
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+public class Main {
+  public static void main(String[] args) {
+    
+	Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    long[] a = new long[n]; long[] b = new long[n];
+    for(int i=0;i<n;i++)a[i] = sc.nextLong();
+    for(int i=0;i<n;i++)b[i] = sc.nextLong();
+    
+    long[][] data = new long[n][n];
+    
+   
+    
+    for(int i=0;i<n;i++){
+      for(int j=0;j<n;j++){
+        data[i][j] = (a[i]-a[j])*(b[j]-b[i]);
+      }
+    }
+    
+    // assume i > j
+    long curr = 0;
+    for(int i=0;i<n;i++){
+      curr += a[i]*b[i];
+    }
+
+    long diff = 0;
+    for(int sum = 1; sum <= 2*n - 3; sum++){
+      long temp = 0;
+      for(int x = sum/2; x >= 0; x--){
+        if(sum-x <= n-1)
+        	temp += data[sum-x][x];
+            diff = Math.max(diff, temp);
+
+      }
+    }
+    
+    
+    System.out.println(diff + curr);
+    
+  }
+}
