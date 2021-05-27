@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit){
+      
+      int testCases=in.nextInt();
+        
+        int ans=0,ans1=0;
+        
+        for(int t=0;t<testCases;t++){
+            
+            int a=in.nextInt();
+            int b=in.nextInt();
+            
+            ans+=(b-a);
+            
+            ans1=Math.max(ans1,ans);
+            
+        }
+        
+        System.out.print(ans1);
+        
+    }
+    
+}
