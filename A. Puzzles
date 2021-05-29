@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit){
+      
+      int m=in.nextInt();
+      
+      int n=in.nextInt();
+      
+     int a[]=new int[n];
+        
+        for(int i=0;i<n;i++){
+            
+            a[i]=in.nextInt();
+            
+        }
+        
+        Arrays.sort(a);
+        
+        int ans=Integer.MAX_VALUE;
+        
+        for(int i=0;i<=n-m;i++){
+            
+            ans=Math.min(ans,a[i+m-1]-a[i] );
+            
+        }
+        
+        System.out.print(ans);
+        
+    }
+    
+}
