@@ -1,0 +1,20 @@
+import java.util.*;
+
+public class AlgorithmSheet {
+    public static void main(String[] args) {
+    
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        
+        ArrayList<Character> c = new ArrayList<Character>();
+        int count = 0;
+        
+        for(int i = 1; i < s.length(); i+=3){
+            if(!c.contains(s.charAt(i)) && s.length() > 2){
+                count += 1;
+                c.add(s.charAt(i));
+            }
+        }
+        System.out.println(count);
+    }
+}
