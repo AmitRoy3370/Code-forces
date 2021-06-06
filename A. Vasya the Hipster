@@ -1,0 +1,53 @@
+import java.util.Scanner;
+ 
+public class Main {
+ 
+    public static void main(String[] args) {
+        // write your code here
+ 
+        Scanner scanner = new Scanner(System.in);
+        int red = scanner.nextInt();
+        int blue = scanner.nextInt();
+        int max_diffrent_socks;
+        int max_same_socks;
+ 
+        if (blue==red){
+            max_diffrent_socks = blue;
+            System.out.println(max_diffrent_socks);
+            if (red - blue >= 2) {
+                max_same_socks = ((red + blue) - (max_diffrent_socks * 2)) / 2;
+                System.out.println(max_same_socks);
+            } else {
+                max_same_socks = 0;
+                System.out.println(max_same_socks);
+            }
+ 
+        }
+        if (blue <red) {
+            max_diffrent_socks = blue;
+            System.out.println(max_diffrent_socks);
+            if (red - blue >= 2) {
+                max_same_socks = ((red + blue) - (max_diffrent_socks * 2)) / 2;
+                System.out.println(max_same_socks);
+            } else {
+                max_same_socks = 0;
+                System.out.println(max_same_socks);
+            }
+        }
+        if (red < blue) {
+            max_diffrent_socks = red;
+            System.out.println(max_diffrent_socks);
+            if (blue - red >= 2) {
+                max_same_socks = ((red + blue) - (max_diffrent_socks * 2)) / 2;
+                System.out.println(max_same_socks);
+            } else {
+                max_same_socks = 0;
+                System.out.println(max_same_socks);
+            }
+        }
+ 
+ 
+    }
+}
+
+ 	 		  			  	    		  	   	 	 	
