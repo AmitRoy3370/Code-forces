@@ -1,0 +1,63 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit){
+    
+    int testCases=in.nextInt();
+      
+      for(int t=0;t<testCases;t++){
+      
+      int n=in.nextInt();
+      
+     int a[]=new int[n];
+        
+        for(int i=0;i<n;i++){
+            
+            a[i]=in.nextInt();
+        
+        
+        }
+        
+        boolean v=true;
+        
+        for(int i=0;i<n;i++){
+            
+            if(a[i]<0){
+                
+                System.out.println("NO");
+                
+                v=false;
+                
+                break;
+                
+            }
+            
+        }
+        
+        if(!v){
+            
+            continue;
+            
+        }
+        
+        System.out.println("YES");
+        
+        System.out.println(101);
+        
+        for(int i=0;i<101;i++){
+            
+            System.out.print(i+" ");
+            
+        }
+       
+       System.out.println();
+        
+      }
+        
+    }
+    
+}
