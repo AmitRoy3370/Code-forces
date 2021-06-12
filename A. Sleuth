@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine().trim().toLowerCase();
+        for (int i=s.length()-1;i>=0;i--)
+        {
+            char ch=s.charAt(i);
+            if(ch>='a'&&ch<='z')
+            {
+                if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='y')
+                    System.out.println("YES");
+                else
+                    System.out.println("NO");
+                break;
+            }
+        }
+    }
+}
