@@ -1,0 +1,35 @@
+import java.util.*;
+ public class s
+
+{
+
+    static boolean isTriangular(int num)
+    {
+        
+        if (num < 0)
+            return false;
+     
+      
+        int sum = 0;
+         
+        for (int n = 1; sum <= num; n++)
+        {
+            sum = sum + n;
+            if (sum == num)
+                return true;
+        }
+     
+        return false;
+    }
+     
+    
+    public static void main (String[] args)
+    {
+    	Scanner In=new Scanner(System.in);
+        int n = In.nextInt();
+        if (isTriangular(n))
+            System.out.print("YES");
+        else
+            System.out.print("NO");
+    }
+}
