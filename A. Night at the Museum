@@ -1,0 +1,31 @@
+
+import java.util.*;
+
+public class JavaApplication1 {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int ptr = 0;
+        String txt = in.next();
+        int ans = 0;
+
+        for (int i = 0; i < txt.length(); i++) {
+            int target = txt.charAt(i) - 97;
+            int a = Math.abs(target - ptr);
+            int b = -1;
+
+            if (target > ptr) {
+                b = ptr + (26 - target);
+            } else if (ptr > target) {
+                b = target + (26 - ptr);
+            } else {
+                b = 0;
+            }
+            ans += Math.min(a, b);
+            ptr = target;
+
+        }
+        System.out.println(ans);
+    }
+
+}
