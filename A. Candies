@@ -1,0 +1,48 @@
+import java.io.OutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+/**
+ * Built using CHelper plug-in
+ * Actual solution is at the top
+ *
+ * @author Jochizan
+ */
+public class Main {
+    public static void main(String[] args) {
+        InputStream inputStream = System.in;
+        OutputStream outputStream = System.out;
+        Scanner in = new Scanner(inputStream);
+        PrintWriter out = new PrintWriter(outputStream);
+        ACandies solver = new ACandies();
+        solver.solve(1, in, out);
+        out.close();
+    }
+
+    static class ACandies {
+        public void solve(int testNumber, Scanner in, PrintWriter out) {
+            int t = in.nextInt();
+
+            while (t-- > 0) {
+
+                long res = 1;
+                long count = 1;
+                long n = in.nextLong();
+                while (true) {
+                    res += Math.pow(2, count);
+                    count++;
+
+//                out.println(res);
+                    if (n % res == 0) {
+                        out.println(n / res);
+                        break;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
