@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    public static void main(String[] amit){
+        
+        Scanner in=new Scanner(System.in);
+        
+        int n=in.nextInt();
+        
+        int m=in.nextInt();
+        
+        int ans=1;
+        
+        for(int i=1;i<n;i++){
+            
+            if(ans%m==0){
+                
+                ans++;
+            }
+            
+            ans++;
+            
+            if(ans%m==0){
+                
+                ans++;
+                
+            }
+            
+        }
+        
+        System.out.println(ans);
+        
+    }
+    
+}
