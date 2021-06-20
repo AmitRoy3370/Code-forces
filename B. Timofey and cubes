@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit){
+        
+        int n=in.nextInt();
+        
+        long a[]=new long[n+1];
+        
+        for(int i=1;i<=n;i++){
+            
+            a[i]=in.nextLong();
+            
+        }
+        
+        for(int i=1;i<=n/2;i+=2){
+            
+        //    if(i%2==1){
+                
+                long temp=a[i];
+                a[i]=a[n-i+1];
+                a[n-i+1]=temp;
+                
+          //  }
+            
+        }
+        
+       for(int i=1;i<=n;i++){
+           
+           System.out.print(a[i]+" ");
+           
+       }
+        
+    }
+    
+}
