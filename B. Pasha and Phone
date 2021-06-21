@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class B {
+
+    private static long d;
+
+    public static void main(String[] args) {
+        Scanner cin = new Scanner(System.in);
+        long n = cin.nextLong();
+        long m = cin.nextLong();
+
+        d = 1;
+        for (int i = 0; i < m - 1; i++) {
+            d *= 10;
+        }
+
+        long[] a = new long[(int) (n / m)];
+        long[] b = new long[(int) (n / m)];
+
+        for (int i = 0; i < n / m; i++) {
+            a[i] = cin.nextLong();
+        }
+        for (int i = 0; i < n / m; i++) {
+            b[i] = cin.nextLong();
+        }
+
+        cin.close();
+
+        long mod = 1000000000 + 7;
+        long ans = 1;
+        for (int i = 0; i < n / m; i++) {
+            long all = d * 10 / a[i];
+            if (d * 10 % a[i] == 0) {
+                all--;
+            }
+            long now = d * b[i] / a[i];
+            if (d * b[i] % a[i] == 0) {
+                now--;
+            }
+            now += all - (d * (b[i] + 1)) / a[i];
+            if (d * (b[i] + 1) % a[i] == 0) {
+                now += 1;
+            }
+            now += 1;
+            ans = (ans * now) % mod;
+        }
+
+        System.out.println(ans);
+    }
+
+    private static boolean isOK(long value, long head) {
+        return value / d != head;
+    }
+
+}
