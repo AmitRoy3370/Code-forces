@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main{
+    
+    public static void main(String[] amit){
+        
+        Scanner in=new Scanner(System.in);
+        
+        long a[]=new long[3];
+        
+        a[0]=in.nextLong();
+        a[1]=in.nextLong();
+        a[2]=in.nextLong();
+        
+        long b[]=new long[3];
+        
+        b[0]=a[0];
+        b[1]=a[1];
+        b[2]=a[2];
+        
+        Arrays.sort(a);
+        
+        for(long i: a){
+            
+            System.out.println(i);
+            
+        }
+        
+        System.out.println();
+        
+        for(long i: b){
+            
+            System.out.println(i);
+            
+        }
+        
+    }
+    
+}
