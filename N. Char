@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    public static void main(String[] amit ){
+        
+        Scanner in=new Scanner(System.in);
+        
+        char val=in.next().charAt(0);
+        
+        if (Character.isUpperCase(val)) {
+   
+   System.out.println(String.valueOf( val ).toLowerCase() );
+
+        }else {
+ 
+   System.out.println(String.valueOf( val ).toUpperCase() );
+
+            
+        }
+        
+    }
+    
+}
