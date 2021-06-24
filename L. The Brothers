@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    public static void main(String[] amit){
+        
+        Scanner in=new Scanner(System.in);
+        
+       String a=in.next();
+       String b=in.next();
+       
+       String c=in.next();
+       String d=in.next();
+        
+        if(b.equalsIgnoreCase(d) ){
+            
+            System.out.println("ARE Brothers");
+            
+        }else{
+            
+            System.out.println("NOT");
+            
+        }
+        
+    }
+    
+}
