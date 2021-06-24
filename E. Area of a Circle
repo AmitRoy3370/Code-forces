@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    public static void main(String[] amit){
+        
+        Scanner in=new Scanner(System.in);
+        
+        double A=in.nextDouble();
+       
+        double ans=Math.PI*A*A;
+        
+        System.out.println(ans);
+        
+    }
+    
+}
