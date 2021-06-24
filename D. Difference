@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    public static void main(String[] amit){
+        
+        Scanner in=new Scanner(System.in);
+        
+        long A=in.nextLong();
+        long B=in.nextLong();
+        long C=in.nextLong();
+        long D=in.nextLong();
+        
+        long ans=(A*B)-(C*D);
+        
+        System.out.println("Difference = "+ans);
+        
+    }
+    
+}
