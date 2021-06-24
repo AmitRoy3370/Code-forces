@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    public static void main(String[] amit){
+        
+        Scanner in=new Scanner(System.in);
+        
+        double a=in.nextDouble();
+       
+       double b=in.nextDouble();
+       
+        double floor=Math.floor( a/b );
+        double round=Math.round(a/b);
+        double ceil=Math.ceil(a/b);
+        
+        System.out.println("floor "+(int)a+" / "+(int)b+" = "+(int)floor);
+         System.out.println("ceil "+(int)a+" / "+(int)b+" = "+(int)ceil);
+          System.out.println("round "+(int)a+" / "+(int)b+" = "+(int)round);
+        
+    }
+    
+}
