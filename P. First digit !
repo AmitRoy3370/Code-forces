@@ -1,0 +1,26 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main{
+    
+    public static void main(String[] amit){
+        
+        Scanner in=new Scanner(System.in);
+        
+     String s=in.next();
+        
+        int n=Integer.parseInt( String.valueOf( s.charAt(0) ) );
+        
+        if(n%2==0){
+            
+            System.out.println("EVEN");
+            
+        }else{
+            
+            System.out.println("ODD");
+            
+        }
+        
+    }
+    
+}
