@@ -1,0 +1,78 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class NewYearTransportation {
+	
+	static Ad[] adj;
+	static boolean[] vis;
+	
+	
+	public static void main (String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int n = Integer.parseInt(st.nextToken()), t = Integer.parseInt(st.nextToken());
+		
+		st = new StringTokenizer(br.readLine());
+		
+		int[] arr = new int[n+1];
+		adj = new Ad[n+1];
+		vis = new boolean[n+1];
+		
+		for (int i = 1; i <= n; i++) {
+			adj[i] = new Ad();
+		}
+		
+		for (int i = 1; i <= n - 1; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+			adj[i].add(i + arr[i]);
+		}
+		
+		br.close();
+		
+		bfs(1);
+		
+		if (vis[t]) {
+			
+			System.out.println("YES");
+			
+		} else {
+			
+			System.out.println("NO");
+			
+		}
+		
+	}
+	
+	static void bfs(int node) {
+		Queue<Integer> q = new LinkedList<Integer>();
+		q.add(node);
+		
+		while (!q.isEmpty()) {
+			int curr = q.poll();
+			vis[curr] = true;
+			
+			if (adj[curr].l.size() > 0) {
+				q.add(adj[curr].l.get(0));
+			}
+		}
+		
+	}
+	
+}
+
+class Ad {
+	ArrayList<Integer> l;
+	Ad() {
+		l = new ArrayList<Integer>();
+	}
+	
+	void add(int a) {
+		l.add(a);
+	}
+}
