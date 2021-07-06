@@ -1,0 +1,66 @@
+import java.util.Scanner;
+import java.util.Map;
+import java.util.HashMap;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String args[]) {
+     
+     Map<Character,Integer> map=new HashMap<>();
+     
+     map.put('6',1);
+     map.put('7',2);
+     map.put('8',3);
+     map.put('9',4);
+     map.put('T',5);
+     map.put('J',6);
+     map.put('Q',7);
+     map.put('K',8);
+     map.put('A',9);
+     
+     char tramp=in.next().charAt(0);
+     
+     String s=in.next();
+     
+     char firstRank=s.charAt(0);
+     char firstSuit=s.charAt(1);
+     
+     String t=in.next();
+     
+     char secondRank=t.charAt(0);
+     char secondSuit=t.charAt(1);
+     
+     //map.get(firstRank)>map.get(secondRank)
+     
+     if( firstSuit==secondSuit  ){
+         
+         if(map.get(firstRank)>map.get(secondRank) ){
+             
+             System.out.println("YES");
+             
+             //return;
+             
+         }else{
+             
+             System.out.println("NO");
+             
+         }
+       
+     }else{
+       
+       if ( firstSuit==tramp ){ 
+           System.out.print("YES");
+       
+       return;
+           
+       };
+         
+         System.out.println("NO");
+         
+         
+     }
+     
+    }
+}
