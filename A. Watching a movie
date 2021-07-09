@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int n,l,r,x;
+    
+    public static void main(String args[]) {
+     
+     int ans=0,t=1;
+     
+     n=in.nextInt();
+     x=in.nextInt();
+     
+     for(int i=1;i<=n;i++){
+         
+         l=in.nextInt();
+         r=in.nextInt();
+         
+         while( t+x<=l ){
+             
+             t+=x;
+             
+         }
+         
+         ans+=r-t+1;
+      
+      t=r+1;
+         
+     }
+     
+     System.out.println(ans);
+     
+    }
+}
