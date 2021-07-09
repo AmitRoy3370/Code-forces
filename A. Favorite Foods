@@ -1,0 +1,46 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static class Cook implements Comparable<Cook> {
+        
+        String s;
+        int n;
+        
+        public Cook(String s,int n){
+            
+            this.s=s;
+            this.n=n;
+            
+        }
+        
+        public int compareTo(Cook c){
+            
+            return this.n-c.n;
+            
+        }
+        
+    }
+    
+    public static void main(String[] amit){
+        
+ int n=in.nextInt();
+        
+        Cook cook[]=new Cook[n];
+        
+     for(int i=0;i<n;i++){
+         
+         cook[i]=new Cook(in.next(),in.nextInt() );
+         
+     }   
+        
+        Arrays.sort(cook);
+        
+        System.out.println( cook[0].s+" "+cook[n-1].s );
+        
+    }
+    
+}
