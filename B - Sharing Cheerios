@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+static double n,m;   
+ 
+    public static void main(String[] amit){
+        
+n=in.nextDouble();
+m=in.nextDouble();
+        
+        int i=0;
+        
+       while(n>0){
+           
+           n-=Math.ceil(n/2);
+           
+           i++;
+           
+       }
+        
+        System.out.println( (int)Math.min(i,m) );
+        
+    }
+    
+}
