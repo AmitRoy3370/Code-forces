@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+static double a,b,x,y,velcocity;
+
+static int n;
+ 
+    public static void main(String[] amit){
+        
+a=in.nextDouble();
+b=in.nextDouble();
+        
+        n=in.nextInt();
+        
+        double min=100000.00;
+        
+        for(int i=1;i<=n;i++){
+            
+            x=in.nextDouble();
+            y=in.nextDouble();
+            velcocity=in.nextDouble();
+            
+            double dis=Math.sqrt( Math.pow( Math.abs(a-x),2 )+Math.pow( Math.abs(b-y),2 )  );
+            
+            double time=dis/velcocity;
+            
+            min=Math.min(time,min);
+            
+        }
+        
+        System.out.println(min);
+        
+    }
+    
+}
