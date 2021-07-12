@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static long n,k,testCases;
+    
+    static void solve(){
+        
+        if( n%2!=k%2 || k*k>n ){
+            
+            System.out.println("NO");
+            
+        }else{
+            
+            System.out.println("YES");
+            
+        }
+        
+    }
+    
+    public static void main( String[] amit ){
+        
+        testCases=in.nextInt();
+        
+        for(long t=0;t<testCases;t++){
+            
+            n=in.nextLong();
+            k=in.nextLong();
+            
+            solve();
+            
+        }
+        
+    }
+    
+}
