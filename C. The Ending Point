@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit){
+        
+        int x=in.nextInt();
+        
+        int y=in.nextInt();
+        
+        char ch[]=in.next().toCharArray();
+        
+        for(char i: ch){
+            
+            if( i=='L' ){
+                
+                x--;
+                
+            }else if(i=='R'){
+                
+                x++;
+                
+            }else if(i=='D'){
+                
+                y--;
+                
+            }else if(i=='U'){
+                
+                y++;
+                
+            }
+            
+        }
+        
+        System.out.println(x+" "+y);
+        
+    }
+    
+}
