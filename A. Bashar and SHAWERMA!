@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit){
+        
+        long n=in.nextLong();
+        
+        System.out.println( n*2 );
+        
+    }
+    
+}
