@@ -1,0 +1,24 @@
+import java.util.*;
+public class demo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-->0){
+            int n = sc.nextInt();
+            int[] arr = new int[2*n];
+            for (int i = 0; i < 2*n; i++) {
+                arr[i] = sc.nextInt();
+            }
+            Stack<Integer> stk = new Stack<>();
+            for (int i = 0; i < 2 * n; i++) {
+                if (!stk.contains(arr[i])){
+                    stk.push(arr[i]);
+                }
+            }
+            for (Integer integer : stk) {
+                System.out.print(integer + " ");
+            }
+            System.out.println();
+        }
+    }
+}
