@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit){
+        
+        int n=in.nextInt();
+        
+        int one=1;
+        
+      for(int i=2;i<=n;i++){
+          
+          if(n%i==0){
+              
+              one=i;
+              break;
+              
+          }
+          
+      }
+        
+        int two=n/one;
+        
+        System.out.println(one+" "+two);
+        
+    }
+    
+}
