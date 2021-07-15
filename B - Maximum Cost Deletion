@@ -1,0 +1,36 @@
+import java.util.*;
+public class CF
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int ans=0;
+			int n=sc.nextInt();
+			int a=sc.nextInt();
+			int b=sc.nextInt();
+			String s=sc.next();
+			if(b<0)
+			{
+				int var=0;
+				char e=s.charAt(0), m=s.charAt(0);
+				for(int i=0; i<s.length(); i++)
+				{
+					char c=s.charAt(i);
+					if(c!=e && c!=m)
+						var++;
+					e=c;
+				}
+				var+=1;
+				ans=n*a+var*b;
+			}
+			else
+			{
+				ans=n*a+n*b;
+			}
+			System.out.println(ans);
+		}
+	}
+}
