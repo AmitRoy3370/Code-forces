@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String args[]) {
+      
+      int testCases=in.nextInt();
+      
+      for(int t=0;t<testCases;t++){
+      
+     int a=in.nextInt();
+     int b=in.nextInt();
+     int c=in.nextInt();
+     int d=in.nextInt();
+     
+     System.out.println(b+" "+c+" "+c);
+     
+      }
+     
+    }
+}
