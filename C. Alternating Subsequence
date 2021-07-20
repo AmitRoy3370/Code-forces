@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int testCases,n;
+    
+    static long a[];
+    
+    static boolean checkPositive(long n){
+        
+        return n>0;
+        
+    }
+    
+    static void solve(){
+        
+        long ans=0;
+        
+        for(int i=0;i<n;i++){
+            
+            int j=i;
+            
+            long curr=a[i];
+            
+            while(j<n && checkPositive(a[i])==checkPositive( a[j] ) ){
+                
+                curr=Math.max(curr,a[j]);
+                
+                j++;
+                
+            }
+            
+            i=j-1;
+            
+            ans+=curr;
+            
+        }
+        
+        System.out.println(ans);
+        
+    }
+    
+    public static void main(String args[]) {
+    
+    testCases=in.nextInt();
+    
+    for(int t=0;t<testCases;t++)
+    {
+    
+    n=in.nextInt();
+    
+    a=new long[n];
+    
+    for(int i=0;i<n;i++){
+        
+        a[i]=in.nextLong();
+        
+    }
+    
+    solve();
+    
+    }
+    
+    }
+}
