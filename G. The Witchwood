@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int n,k;
+    
+    static int a[];
+    
+    public static void main(String amit[]) {
+     
+     n=in.nextInt();
+     
+     k=in.nextInt();
+     
+     a=new int[n];
+     
+     for(int i=0;i<n;i++){
+         
+         a[i]=in.nextInt();
+         
+     }
+     
+     Arrays.sort(a);
+     
+     long ans=0;
+     
+     for(int i=n-1,j=0;i>=0 && j<k;i--,j++){
+         
+         ans+=a[i];
+         
+     }
+     
+     System.out.println(ans);
+     
+    }
+}
