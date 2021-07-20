@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int testCases;
+    
+    static long x,y;
+    
+    public static void main(String args[]) {
+      
+      testCases=in.nextInt();
+      
+      for(int t=0;t<testCases;t++){
+          
+          y=in.nextLong();
+          
+          x=in.nextLong();
+          
+          System.out.println( ((y*100)/(100+x)) );
+          
+      }
+      
+    }
+}
