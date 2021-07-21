@@ -1,0 +1,22 @@
+import java.util.*;
+import java.text.*;
+
+public class A_Case_of_the_Zeros_and_Ones {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+    StringBuilder s = new StringBuilder(sc.next());
+
+    int ones = 0;
+    for (int i = 0; i < s.length(); i++) {
+      if (s.charAt(i) == '1') {
+        ones++;
+      }
+    }
+
+    System.out.println(n - 2 * Math.min(ones, n - ones));
+
+    sc.close();
+  }
+}
