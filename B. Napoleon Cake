@@ -1,0 +1,143 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
+
+public class MyClass {
+    
+        static Scanner in=new Scanner();
+    
+    static PrintWriter out=new PrintWriter( new OutputStreamWriter(System.out) );
+    
+    static int n,testCases;
+    
+    static int a[];
+    
+    public static void main(String amit[]) throws IOException {
+      
+      testCases=in.nextInt();
+      
+      for(int t=0;t<testCases;t++){
+      
+      n=in.nextInt();
+      
+      a=new int[n];
+      
+      for(int i=0;i<n;i++){
+          
+          a[i]=in.nextInt();
+          
+      }
+      
+    //  in.close();
+      
+      int ans[]=new int[n];
+      
+      int k=0;
+      
+      for(int i=n-1;i>=0;i--){
+          
+     k=Math.max(k,a[i]);      
+    
+    if(k>0){
+      
+      ans[i]=1;
+        
+       k--; 
+        
+    }
+    
+      }
+      
+      for(int i=0;i<n;i++){
+          
+          out.print(ans[i]+" ");
+          out.flush();
+          
+      }
+      
+      out.println();
+      out.flush();
+      
+      }
+      
+      in.close();
+      
+    }
+    
+      static class Scanner{
+        
+        BufferedReader in;
+        StringTokenizer st;
+ 
+        public Scanner() {
+        
+            in=new BufferedReader( new InputStreamReader(System.in) );
+            
+        }
+        
+        String next() throws IOException{
+            
+            while(st==null || !st.hasMoreElements()){
+                
+                st=new StringTokenizer(in.readLine());
+                
+            }
+            
+            return st.nextToken();
+            
+        }
+        
+        int nextInt() throws IOException{
+            
+            return Integer.parseInt(next());
+            
+        }
+        
+        long nextLong() throws IOException{
+            
+            return Long.parseLong(next());
+            
+        }
+        
+        String nextLine() throws IOException{
+            
+            return in.readLine();
+            
+        }
+        
+        char nextChar() throws IOException{
+            
+            return next().charAt(0);
+            
+        }
+        
+        double nextDouble() throws IOException{
+            
+            return Double.parseDouble(next());
+            
+        }
+        
+        float nextFloat() throws IOException{
+            
+            return Float.parseFloat(next());
+            
+        }
+        
+        boolean nextBoolean() throws IOException{
+            
+            return Boolean.parseBoolean(next());
+            
+        }
+        
+        void close() throws IOException{
+            
+            in.close();
+            
+        }
+        
+    }
+    
+}
