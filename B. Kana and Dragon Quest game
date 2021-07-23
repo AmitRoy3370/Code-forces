@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class r635c {
+	public static void main(String[] args) {
+		Scanner scan=new Scanner(System.in);
+		int t=scan.nextInt();
+		for(int tt=0;tt<t;tt++) {
+			int x=scan.nextInt(), n=scan.nextInt(), m=scan.nextInt();
+			while(n>0&&x>20) {
+				x=x/2+10;
+				n--;
+			}
+			System.out.println(x-m*10<=0?"YES":"NO");
+		}
+	}
+}
