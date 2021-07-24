@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int n,testCases;
+    
+    static int a[];
+    
+    static void solve(){
+        
+        int even=0,odd=0;
+    
+    long sum=0;
+        
+        for(int i: a){
+            
+            if(i%2==0){
+                
+                even++;
+                
+            }else{
+                
+                odd++;
+                
+            }
+            
+            sum+=i;
+            
+        }
+        
+        if(sum%2==1){
+            
+            System.out.println("YES");
+            
+            return;
+            
+        }
+        
+        if( even==n || odd==n ){
+            
+            System.out.println("NO");
+            
+            return;
+            
+        }
+        
+        System.out.println("YES");
+        
+    }
+    
+    public static void main(String args[]) {
+     
+     testCases=in.nextInt();
+     
+     for(int t=0;t<testCases;t++){
+         
+         n=in.nextInt();
+         
+         a=new int[n];
+         
+         for(int i=0;i<n;i++){
+             
+             a[i]=in.nextInt();
+             
+         }
+         
+         solve();
+         
+     }
+     
+    }
+}
