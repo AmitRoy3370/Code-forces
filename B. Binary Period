@@ -1,0 +1,133 @@
+
+import java.io.*;
+import java.util.*;
+
+
+public class CODECHEF {
+    static class FastReader {
+        byte[] buf = new byte[2048];
+        int index, total;
+        InputStream in;
+
+        FastReader(InputStream is) {
+            in = is;
+        }
+
+        int scan() throws IOException {
+            if (index >= total) {
+                index = 0;
+                total = in.read(buf);
+                if (total <= 0) {
+                    return -1;
+                }
+            }
+            return buf[index++];
+        }
+
+        String next() throws IOException {
+            int c;
+            for (c = scan(); c <= 32; c = scan())
+                ;
+            StringBuilder sb = new StringBuilder();
+            for (; c > 32; c = scan()) {
+                sb.append((char) c);
+            }
+            return sb.toString();
+        }
+
+        String nextLine() throws IOException {
+            int c;
+            for (c = scan(); c <= 32; c = scan())
+                ;
+            StringBuilder sb = new StringBuilder();
+            for (; c != 10 && c != 13; c = scan()) {
+                sb.append((char) c);
+            }
+            return sb.toString();
+        }
+
+        char nextChar() throws IOException {
+            int c;
+            for (c = scan(); c <= 32; c = scan())
+                ;
+            return (char) c;
+        }
+
+        int nextInt() throws IOException {
+            int c, val = 0;
+            for (c = scan(); c <= 32; c = scan())
+                ;
+            boolean neg = c == '-';
+            if (c == '-' || c == '+') {
+                c = scan();
+            }
+            for (; c >= '0' && c <= '9'; c = scan()) {
+                val = (val << 3) + (val << 1) + (c & 15);
+            }
+            return neg ? -val : val;
+        }
+
+        long nextLong() throws IOException {
+            int c;
+            long val = 0;
+            for (c = scan(); c <= 32; c = scan())
+                ;
+            boolean neg = c == '-';
+            if (c == '-' || c == '+') {
+                c = scan();
+            }
+            for (; c >= '0' && c <= '9'; c = scan()) {
+                val = (val << 3) + (val << 1) + (c & 15);
+            }
+            return neg ? -val : val;
+        }
+
+    }
+    static long MODE=1000000000+7;
+    static long gcd(long a,long b){
+        if(a==0)
+            return b;
+        return gcd(b%a,a);
+    }
+    static  boolean isSafe(int i,int n){
+        return (i>=0 && i<n);
+    }
+    static LinkedList<Integer>[] adj;
+
+
+    public static void main(String[] args) throws java.lang.Exception {
+        FastReader fs=new FastReader(System.in);
+        StringBuilder sb=new StringBuilder();
+        PrintWriter out=new PrintWriter(System.out);
+      int t=fs.nextInt();
+      while (t-->0){
+        String s=fs.nextLine();
+        int n=s.length();
+        if(!s.contains("01") && !s.contains("10")){
+            System.out.println(s);
+        }else{
+            int i=s.indexOf("01");
+            int j=s.indexOf("10");
+            int min=-1;
+            if(i==-1)
+                min=j;
+            else if(j==-1)
+                min=i;
+            else
+                min=Math.min(i,j);
+
+            char c1=s.charAt(min);
+            char c2=s.charAt(min+1);
+            String res="";
+            for(int k=0;k<n;k++)
+                res=res+c1+c2;
+            System.out.println(res);
+        }
+
+
+
+        }
+//      out.close();
+    }
+}
+
