@@ -1,0 +1,174 @@
+//package MyPackage;
+import java.io.*;
+import java.util.*;
+public class MyClass {
+    final static long mod = 1_000_000_007;
+    final static int mini = Integer.MIN_VALUE;
+    final static int maxi = Integer.MAX_VALUE;
+    static long gcd(long a, long b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+    static boolean isPrime(int n) {
+        if (n <= 1)
+            return false;
+        else if (n == 2)
+            return true;
+        else if (n % 2 == 0)
+            return false;
+        for (int i = 3; i <= Math.sqrt(n); i += 2) {
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+    static int digits(long n) {
+        int count = 0;
+        long temp = n;
+        while (temp > 0) {
+            temp /= 10;
+            count++;
+        }
+        return count;
+    }
+    static boolean isPalindrome(long i) {
+        long originalNum = i;
+        long remainder;
+        long reversedNum = 0;
+        while (i != 0) {
+            remainder = i % 10;
+            reversedNum = reversedNum * 10 + remainder;
+            i /= 10;
+        }
+        return originalNum == reversedNum;
+    }
+    static long lcm(long a, long b) {
+        return (a / gcd(a, b)) * b;
+    }
+    static void sort(long[] a) {
+        ArrayList<Long> l = new ArrayList<>();
+        for (long value : a) {
+            l.add(value);
+        }
+        Collections.sort(l);
+        for (int i = 0; i < l.size(); i++)
+            a[i] = l.get(i);
+    }
+    static void sort(int[] a) {
+        ArrayList<Integer> l = new ArrayList<>();
+        for (int value : a) {
+            l.add(value);
+        }
+        Collections.sort(l);
+        for (int i = 0; i < l.size(); i++)
+            a[i] = l.get(i);
+    }
+    static void reverse(int[] arr) {
+        int l = 0;
+        int h = arr.length - 1;
+        while (l < h) {
+            swap(arr, l, h);
+            l++;
+            h--;
+        }
+    }
+    static String reverse(String s) {
+        StringBuilder res = new StringBuilder(s);
+        return res.reverse().toString();
+    }
+    static long fact(long n) {
+        long res = 1, i;
+        for (i = 2; i <= n; i++)
+            res *= i;
+        return res;
+    }
+    static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+
+        public FastReader() {
+            br = new BufferedReader(new InputStreamReader(System.in));
+        }
+
+        String n() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+
+        int nint() {
+            return Integer.parseInt(n());
+        }
+
+        float nfloat() {
+            return Float.parseFloat(n());
+        }
+
+        long nlong() {
+            return Long.parseLong(n());
+        }
+
+        double ndouble() {
+            return Double.parseDouble(n());
+        }
+
+        int[] narr(int n) {
+            int[] a = new int[n];
+            for (int i = 0; i < n; i++) a[i] = nint();
+            return a;
+        }
+
+        int[][] narr(int n, int m) {
+            int[][] a = new int[n][m];
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < m; j++)
+                    a[i][j] = nint();
+            return a;
+        }
+
+        String nline() {
+            String str = "";
+            try {
+                str = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+    public static class Pair {
+        int a;
+        int b;
+
+        public Pair(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+    }
+    public static void main(String[] args) {
+        FastReader sc = new FastReader();
+        PrintWriter out = new PrintWriter(System.out);
+        int t = sc.nint();
+        while(t-- > 0) {
+            int[] val = sc.narr(2);
+            int a = sc.nint();
+            int b = sc.nint();
+            sort(val);
+            long x = (long) b * val[0] + (long) a * (val[1] - val[0]);
+            long y = (long) a * (val[0] + val[1]);
+            out.println(Math.min(x, y));
+        }
+        out.flush();
+        out.close();
+    }
+}
