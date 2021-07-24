@@ -1,0 +1,43 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main{
+    
+    static Scanner in=new Scanner(System.in);
+    
+static int testCases;
+
+static long a,b,c,n;
+ 
+    public static void main(String[] amit){
+        
+testCases=in.nextInt();
+        
+        for(int t=0;t<testCases;t++){
+           
+           a=in.nextLong();
+           b=in.nextLong();
+           c=in.nextLong();
+            n=in.nextLong();
+            
+            long arr[]={a,b,c};
+            
+            Arrays.sort(arr);
+            
+            n-=arr[2]*2-arr[1]-arr[0];
+            
+            if( n<0 || n%3!=0 ){
+                
+                System.out.println("NO");
+                
+            }else {
+                
+                System.out.println("YES");
+                
+            }
+            
+        }
+        
+    }
+    
+}
