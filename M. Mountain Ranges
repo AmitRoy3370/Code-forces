@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String args[]) {
+      
+      int n=in.nextInt();
+      int x=in.nextInt();
+      
+      int a[]=new int[n];
+      
+      for(int i=0;i<n;i++){
+          
+          a[i]=in.nextInt();
+          
+      }
+      
+      int last=-10000,ans=0,curr=0;
+      
+      for(int i=0;i<n;i++){
+          
+          if( a[i]-last>x ){
+              
+              curr=1;
+              
+          }else{
+              
+              curr++;
+              
+          }
+          
+          ans=Math.max(ans,curr);
+          
+          last=a[i];
+          
+      }
+      
+      System.out.println(ans);
+      
+    }
+}
