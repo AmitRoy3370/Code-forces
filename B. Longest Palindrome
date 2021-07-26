@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class MyClass{
+    
+    	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		while (sc.hasNext())
+		{
+			
+			int n = sc.nextInt();
+			
+			int m = sc.nextInt();
+			
+			String strghait[] = new String[n + 10];
+			
+			String rev[] = new String[n + 10];
+			
+			String ans = "";
+			for (int i = 1; i <= n; i++)
+			{
+				String a = sc.next();
+				String b = new StringBuffer(a).reverse().toString();
+				strghait[i] = a;
+				rev[i] = b;
+				if (strghait[i].equals(rev[i]))
+					ans = strghait[i];
+			}
+			for (int i = 1; i <= n; i++)
+			{
+				for (int j = i + 1; j <= n; j++)
+				{
+					if (rev[i].equals(strghait[j]))
+						ans = strghait[i] + ans + rev[i];
+				}
+			}
+			System.out.println(ans.length());
+			System.out.println(ans);
+		}
+	}
+    
+    
+}
