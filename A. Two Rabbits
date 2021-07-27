@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class A_Two_Rabbits{
+
+static Scanner in=new Scanner(System.in);
+
+static int testCases;
+
+static long x,y,a,b;
+
+public static void main(String[] amit){
+
+testCases=in.nextInt();
+
+for(int t=0;t<testCases;t++){
+
+long x=in.nextLong();
+
+long y=in.nextLong();
+
+long a=in.nextLong();
+
+long b=in.nextLong();
+
+System.out.println( ((y-x)%(a+b))==0?( (y-x)/(a+b) ) : -1 );
+
+}
+
+}
+
+}
