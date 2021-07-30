@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class MyClass{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit){
+        
+        int n=in.nextInt();
+        int m=in.nextInt();
+        
+        int a[]=new int[n+1];
+        
+        int sum[]=new int[n+1];
+        
+        for(int i=1;i<=n;i++){
+            
+            a[i]=in.nextInt();
+            
+                sum[i]+=sum[i-1]+a[i];
+                
+        }
+        
+        for(int i=0;i<m;i++){
+            
+            int x=in.nextInt();
+            int y=in.nextInt();
+            
+            if( (sum[y]-sum[x-1] & 1)>=1 ){
+                
+                System.out.println("Nao");
+                
+            }else{
+                
+                System.out.println("Sim");
+                
+            }
+            
+        }
+        
+    }
+    
+}
