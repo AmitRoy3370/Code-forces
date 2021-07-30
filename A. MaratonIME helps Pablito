@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.math.BigInteger;
+
+public class MyClass{
+    
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit){
+        
+        int testCases=in.nextInt();
+        
+        for(int t=0;t<testCases;t++){
+            
+            long n=in.nextLong();
+            long m=in.nextLong();
+            
+            long ans=BigInteger.valueOf(n).gcd( BigInteger.valueOf(m) ).longValue();
+            
+            if(ans!=1){
+                
+                System.out.println("Sim");
+                
+            }else{
+                
+                System.out.println("Nao");
+                
+            }
+            
+        }
+        
+    }
+    
+}
