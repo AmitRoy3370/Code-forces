@@ -1,0 +1,164 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
+
+public class B_Gregor_and_the_Pawn_Game {
+
+       static Scanner in=new Scanner();
+    
+    static PrintWriter out=new PrintWriter( new OutputStreamWriter(System.out) );
+     
+    static int n,testCases;
+
+    static String a,b;
+    
+    static void solve(){
+        
+        char t[]=a.toCharArray();
+        char s[]=b.toCharArray();
+        
+        int ans=0;
+        
+        for(int i=0;i<n;i++){
+            
+            if(s[i]=='1'){
+                
+                if(t[i]=='0'){
+                    
+                    ans++;
+                    
+                }else if(i>0 && t[i-1]=='1'){
+                    
+                    t[i-1]='0';
+                    
+                    ans++;
+                    
+                }else if(i+1<n && t[i+1]=='1' ){
+                    
+                    ans++;
+                    
+                    t[i+1]='0';
+                    
+                }
+                
+            }
+            
+        }
+        
+        out.println(ans);
+        out.flush();
+        
+    }
+    
+    public static void main(String[] amit) throws IOException {
+        
+        testCases=in.nextInt();
+        
+        for(int t=0;t<testCases;t++){
+            
+            n=in.nextInt();
+            
+            a=in.next();
+            b=in.next();
+            
+            solve();
+            
+        }
+        
+    }
+    
+    static class Scanner{
+        
+        BufferedReader in;
+        StringTokenizer st;
+
+        public Scanner() {
+        
+            in=new BufferedReader( new InputStreamReader(System.in) );
+            
+        }
+        
+        String next() throws IOException{
+            
+            while(st==null || !st.hasMoreElements()){
+                
+                st=new StringTokenizer(in.readLine());
+                
+            }
+            
+            return st.nextToken();
+            
+        }
+        
+        int nextInt() throws IOException{
+            
+            return Integer.parseInt(next());
+            
+        }
+        
+        long nextLong() throws IOException{
+            
+            return Long.parseLong(next());
+            
+        }
+        
+        String nextLine() throws IOException{
+            
+            return in.readLine();
+            
+        }
+        
+        char nextChar() throws IOException{
+            
+            return next().charAt(0);
+            
+        }
+        
+        double nextDouble() throws IOException{
+            
+            return Double.parseDouble(next());
+            
+        }
+        
+        float nextFloat() throws IOException{
+            
+            return Float.parseFloat(next());
+            
+        }
+        
+        boolean nextBoolean() throws IOException{
+            
+            return Boolean.parseBoolean(next());
+            
+        }
+        
+        void close() throws IOException{
+            
+            in.close();
+            
+        }
+        
+    }
+    
+}
+/*
+
+4
+3
+000
+111
+4
+1111
+1111
+3
+010
+010
+5
+11001
+00000
+
+
+*/
