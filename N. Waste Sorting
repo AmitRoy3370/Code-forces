@@ -1,0 +1,137 @@
+import java.io.*;
+import java.math.*;
+import java.util.*;
+public class apples{
+	static class FastReader {
+		BufferedReader br;
+		StringTokenizer st;
+
+		public FastReader() {
+			br = new BufferedReader(new InputStreamReader(System.in));
+		}
+
+		String next() {
+			while (st == null || !st.hasMoreElements()) {
+				try {
+					st = new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return st.nextToken();
+		}
+
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+
+		double nextDouble() {
+			return Double.parseDouble(next());
+		}
+
+		String nextLine() {
+			String str = "";
+			try {
+				str = br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return str;
+		}
+
+		char nextchar() {
+			char ch = ' ';
+			try {
+				ch = (char) br.read();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return ch;
+		}
+	}
+	public static void main(String[] args) {
+		FastReader x = new FastReader();
+		StringBuilder str = new StringBuilder();
+		int t=x.nextInt();
+		while(t>0) {
+			int a=x.nextInt();
+			int b=x.nextInt();
+			int c=x.nextInt();
+			int d[]=new int[5];
+			int s=0;
+			for (int i = 0; i < 5; i++) {
+				d[i]=x.nextInt();
+				s+=d[i];
+			}
+			int f=0;
+			if(s==0) {
+				f=0;				
+			}
+			else {
+				if(d[0]<=a) {
+					a-=d[0];
+				}
+				else {
+					f=1;
+				}
+				if(d[1]<=b) {
+					b-=d[1];
+				}
+				else {
+					f=1;
+				}
+				if(d[2]<=c) {
+					c-=d[2];
+				}
+				else {
+					f=1;
+				}
+				if(a>0) {
+					if(a>=d[3]) {
+						a-=d[3];
+						d[3]=0;
+					}
+					else {
+						d[3]-=a;
+						a=0;
+					}
+				}
+				if(b>0) {
+					if(b>=d[4]) {
+						b-=d[4];
+						d[4]=0;
+					}
+					else {
+						d[4]-=b;
+						b=0;
+					}
+				}
+				if(d[3]>=0&&d[3]<=c) {
+					c-=d[3];
+				}
+				else {
+					f=1;
+				}
+				if(d[4]>=0&&d[4]<=c) {
+					c-=d[4];
+				}
+				else {
+					f=1;
+				}
+			}
+			if(f==1) {
+				str.append("NO");
+			}
+			else {
+				str.append("YES");
+			}
+			str.append("\n");
+			t--;
+		}
+		System.out.println(str);
+	}
+}
