@@ -1,0 +1,28 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        int t = input.nextInt();
+        while(t-- != 0){
+            double n = input.nextInt();
+            double a = input.nextInt();
+            double b = input.nextInt();
+            double c = input.nextInt();
+            double d = input.nextInt();
+            double flg = 0;
+            for(double i = c - d; i <= c + d; i++){
+                if(i / n >= a - b && i / n <= a + b){
+                    flg = 1;
+                    break;
+                }
+            }
+            if(flg == 0){
+                System.out.println("NO");
+            }else{
+                System.out.println("YES");
+            }
+        }
+    }
+}
