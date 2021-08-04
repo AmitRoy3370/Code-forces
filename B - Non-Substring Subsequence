@@ -1,0 +1,39 @@
+import java.util.*;
+import java.text.*;
+
+public class B_Non_Substring_Subsequence {
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int t = sc.nextInt();
+
+    while (t-- > 0) {
+      int n = sc.nextInt();
+      int q = sc.nextInt();
+
+      String str = sc.next();
+
+      while (q-- > 0) {
+        int l = sc.nextInt() - 1;
+        int r = sc.nextInt() - 1;
+
+        if (r == l) {
+          System.out.println("NO");
+          continue;
+        }
+
+        if (str.indexOf(str.substring(l, l + 1)) < l || str.lastIndexOf(str.substring(r, r + 1)) > r) {
+          System.out.println("YES");
+        } else {
+          System.out.println("NO");
+        }
+      }
+    }
+    // String s = sc.next();
+
+    // System.out.println();
+
+    sc.close();
+  }
+}
