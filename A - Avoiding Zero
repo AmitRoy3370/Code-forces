@@ -1,0 +1,108 @@
+import java.io.*;
+import java.math.*;
+import java.util.*;
+public class lichi {
+	static class FastReader {
+		BufferedReader br;
+		StringTokenizer st;
+
+		public FastReader() {
+			br = new BufferedReader(new InputStreamReader(System.in));
+		}
+
+		String next() {
+			while (st == null || !st.hasMoreElements()) {
+				try {
+					st = new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return st.nextToken();
+		}
+
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+
+		double nextDouble() {
+			return Double.parseDouble(next());
+		}
+
+		String nextLine() {
+			String str = "";
+			try {
+				str = br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return str;
+		}
+
+		char nextchar() {
+			char ch = ' ';
+			try {
+				ch = (char) br.read();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return ch;
+		}
+	}
+
+	public static void main(String[] args) {
+		FastReader x = new FastReader();
+		StringBuilder str = new StringBuilder();
+		int t=x.nextInt();
+		while(t>0) {
+			int n=x.nextInt();
+			ArrayList<Integer> p = new ArrayList<>();
+			ArrayList<Integer> ne = new ArrayList<>();
+			ArrayList<Integer> z = new ArrayList<>();
+			
+			int s=0;
+			for (int i = 0; i < n; i++) {
+				int k=x.nextInt();
+				if(k>0)p.add(k);
+				else if(k<0)ne.add(k);
+				else z.add(k);
+				s+=k;
+			}
+			if(s==0) {
+				str.append("NO");str.append("\n");
+				t--;
+				continue;
+			}
+			else {	
+				str.append("YES");str.append("\n");
+				if(s<0) {
+					for(int i:ne) {
+						str.append(i);str.append(" ");
+					}
+					for(int i:p) {
+						str.append(i);str.append(" ");
+					}
+				}
+				else {
+					for(int i:p) {
+						str.append(i);str.append(" ");
+					}
+					for(int i:ne) {
+						str.append(i);str.append(" ");
+					}
+				}
+			}
+			for(int i:z) {
+				str.append(i);str.append(" ");
+			}
+			str.append("\n");
+			t--;
+		}
+		System.out.println(str);
+	}
+
+}
