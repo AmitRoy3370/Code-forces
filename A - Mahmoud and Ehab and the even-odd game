@@ -1,0 +1,29 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		 Scanner sc=new Scanner(System.in);
+         int n=sc.nextInt();
+          
+         int even=0;
+         int odd=0;
+         if(n%2!=0){
+             even=n/2;
+             odd=(n/2)+1;
+         }
+         else{
+             even=n/2;
+             odd=n/2;
+         }
+          if((even==odd && n%2!=0) || even<odd){
+              System.out.println("Ehab");
+          }
+          else if((even==odd && n%2==0) || even >odd){
+              System.out.println("Mahmoud");
+          }
+          
+            
+      
+	}
+}
