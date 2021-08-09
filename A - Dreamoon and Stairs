@@ -1,0 +1,198 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
+
+public class App {
+  
+  
+    public static void main(String[] args) throws IOException{
+      InputReader in = new InputReader(System.in);
+      solve(in.nextInt(), in.nextInt());
+    }
+
+    private static void solve(int n, int m){
+      boolean found = false;
+      int x = -1 , y = -1;
+      for (int k = 1 ; k * m <= n && !found ; k++){
+        x = n - k * m;
+        y = n - 2*x;
+        if (y >= 0)
+          found = true;
+      }
+
+      System.out.println(found ? x + y : "-1");
+    }
+
+    static class InputReader {
+      public BufferedReader reader;
+      public StringTokenizer tokenizer;
+   
+      public InputReader(InputStream stream) {
+        reader = new BufferedReader(new InputStreamReader(stream), 32768);
+        tokenizer = null;
+      }
+   
+      public String next() {
+        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+          try {
+            tokenizer = new StringTokenizer(reader.readLine());
+          } catch (IOException e) {
+            throw new RuntimeException(e);
+          }
+        }
+        return tokenizer.nextToken();
+      }
+   
+      public int nextInt() {
+        return Integer.parseInt(next());
+      }
+   
+      public long nextLong() {
+        return Long.parseLong(next());
+      }
+      
+      public char nextChar() {
+        return next().charAt(0);
+      }
+      
+      public float nextFloat() {
+        return Float.parseFloat(next());
+      }
+      
+      public double nextDouble() {
+        return Double.parseDouble(next());
+      }
+   
+      public int[] nextIntArray(int size) {
+        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+          try {
+            tokenizer = new StringTokenizer(reader.readLine());
+          } catch (IOException e) {
+            throw new RuntimeException(e);
+          }
+        }
+        int[] arr=new int[size];
+        for(int i = 0; i < size; i++) 
+          arr[i] = Integer.parseInt(tokenizer.nextToken());
+        return arr;
+      }
+   
+      public long[] nextLongArray(int size) {
+        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+          try {
+            tokenizer = new StringTokenizer(reader.readLine());
+          } catch (IOException e) {
+            throw new RuntimeException(e);
+          }
+        }
+        long[] arr=new long[size];
+        for(int i = 0; i < size; i++) 
+          arr[i] = Long.parseLong(tokenizer.nextToken());
+        return arr;
+      }
+      
+      public float[] nextFloatArray(int size) {
+        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+          try {
+            tokenizer = new StringTokenizer(reader.readLine());
+          } catch (IOException e) {
+            throw new RuntimeException(e);
+          }
+        }
+        float[] arr=new float[size];
+        for(int i = 0; i < size; i++) 
+          arr[i] = Float.parseFloat(tokenizer.nextToken());
+        return arr;
+      }
+   
+      public double[] nextDoubleArray(int size) {
+        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+          try {
+            tokenizer = new StringTokenizer(reader.readLine());
+          } catch (IOException e) {
+            throw new RuntimeException(e);
+          }
+        }
+        double[] arr=new double[size];
+        for(int i = 0; i < size; i++) 
+          arr[i] = Double.parseDouble(tokenizer.nextToken());
+        return arr;
+      }
+   
+      public String[] nextStringArray(int size) throws IOException {
+        String[] arr=new String[size];
+        for(int i = 0; i < size; i++) 
+          arr[i] = reader.readLine();
+        return arr;
+      }
+   
+      public char[] nextCharArray(int size) throws IOException {
+        return reader.readLine().toCharArray();
+      }
+    }
+   
+    static class OutputWriter {
+      public PrintWriter pw;
+   
+      public OutputWriter(OutputStream stream) {
+        pw = new PrintWriter(stream);
+      }
+      
+      public void println() {
+        pw.println();
+      }
+   
+      public void println(Object str) {
+        pw.println(str);
+      }
+   
+      public void print(Object str) {
+        pw.print(str + " ");
+      }
+   
+      public void close() {
+        pw.close();
+      }
+   
+      public void flush() {
+        pw.flush();
+      }
+   
+      public void printStringArray(String[] arr) {
+        for(int i = 0; i < arr.length; i++)
+          pw.println(arr[i]);
+      }
+   
+      public void printIntArray(int[] arr) {
+        for(int i = 0; i < arr.length; i++)
+          pw.print(arr[i] + " ");
+      }
+   
+      public void printLongArray(long[] arr) {
+        for(int i = 0; i < arr.length; i++)
+          pw.print(arr[i] + " ");
+      }
+   
+      public void printCharArray(char[] arr) {
+        for(int i = 0; i < arr.length; i++)
+          pw.print(arr[i] + " ");
+      }
+   
+      public void printFloatArray(float[] arr) {
+        for(int i = 0; i < arr.length; i++)
+          pw.print(arr[i] + " ");
+      }
+   
+      public void printDoubleArray(double[] arr) {
+        for(int i = 0; i < arr.length; i++)
+          pw.print(arr[i] + " ");
+      }
+    }
+
+}
+
+
