@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static double a[];
+    
+    static int testCases,n;
+    
+    static void solve(){
+        
+        double max=a[0],index=0;
+        
+        double sum=0.0;
+        
+        for(int i=0;i<n;i++){
+            
+           if( a[i]>max ){
+               
+               index=i;
+               max=a[i];
+               
+           }
+            
+            //sum+=a[i];
+            
+        }
+        
+        int p=0;
+        
+       for(int i=0;i<n;i++){
+           
+           if(index!=i){
+           
+           sum+=a[i];
+           
+           }
+           
+       }
+        
+        double avg1=sum/(double)(n-1);
+    
+   // System.out.println("max: "+max);
+    
+    System.out.println( (avg1+max) );    
+        
+    }
+    
+    public static void main(String args[]) {
+     
+     testCases=in.nextInt();
+     
+     for(int t=0;t<testCases;t++){
+         
+         n=in.nextInt();
+         
+         a=new double[n];
+         
+         for(int i=0;i<n;i++){
+             
+             a[i]=in.nextDouble();
+             
+         }
+         
+         solve();
+         
+     }
+     
+    }
+}
