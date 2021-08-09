@@ -1,0 +1,53 @@
+import java.util.*;
+public class Main {
+    static boolean[] vis;
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        vis = new boolean[n+1];
+
+        HashMap<Integer, LinkedList<Integer>> graph = new HashMap<>();
+        for (int i = 1; i <= n; i++) {
+            graph.put(i, new LinkedList<>());
+            vis[i] = false;
+        }
+        for (int i = 1; i <= n; i++) {
+            int cur = sc.nextInt();
+            if (cur == -1) continue;
+            LinkedList<Integer> soFar = graph.get(cur);
+            soFar.add(i);
+        }
+        int level = 0;
+        for (int i = 1; i <=n; i++) {
+                if (!vis[i]) {
+                level = Math.max(level, findDepth(i, graph));
+            }
+        }
+        System.out.println(level);
+    }
+
+    static int findDepth (int cur, HashMap<Integer, LinkedList<Integer>>  graph) {
+        vis[cur] = true;
+        if (graph.get(cur).isEmpty()) {
+            return 1;
+        }
+        LinkedList<Integer> children = graph.get(cur);
+        int depth = -1;
+        for (Integer child : children) {
+            depth = Math.max(depth, findDepth(child, graph));
+        }
+        return depth+1;
+    }
+
+
+
+
+    /* stuff you should look for
+     * int overflow, array bounds
+     * special cases (n=1?)
+     * do smth instead of nothing and stay organized
+     * WRITE STUFF DOWN
+     * DON'T GET STUCK ON ONE APPROACH
+     */
+}
