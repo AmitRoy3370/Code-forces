@@ -1,0 +1,83 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int n,q;
+    
+    static long a[];
+    
+    static void solve(long  x){
+        
+int l=0,r=n-1,ans=0;        
+        
+        if( x<a[0] ){
+            
+            System.out.println(0);
+            
+            return;
+            
+        }
+        
+        if( x>=a[n-1] ){
+            
+            System.out.println(n);
+            
+            return;
+            
+        }
+        
+        int prev=0;
+        
+        while(r>l){
+            
+            int mid=(l+r+1)/2;
+            
+            if(a[mid]<=x){
+                
+                l=mid;
+                
+            }else{
+                
+                r=mid-1;
+                
+            }
+        
+        }
+        
+        if(x>=a[r]){
+            
+            ans=r+1;
+            
+        }
+        
+        System.out.println(ans);
+        
+    }
+    
+    public static void main(String args[]) {
+     
+     n=in.nextInt();
+     
+     a=new long[n];
+     
+     for(int i=0;i<n;i++){
+         
+         a[i]=in.nextLong();
+         
+     }
+     
+     Arrays.sort(a);
+     
+     q=in.nextInt();
+     
+     for(int i=0;i<q;i++){
+         
+         solve( in.nextLong() );
+         
+     }
+     
+    }
+}
