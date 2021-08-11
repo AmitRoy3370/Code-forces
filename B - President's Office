@@ -1,0 +1,114 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+import java.util.StringTokenizer;
+
+public class Main {
+	static final Random random = new Random();
+	static PrintWriter out = new PrintWriter(System.out);
+	
+	private static int n, m;
+	private static char color;
+	
+	static int[] dx = {0, 0, 1, -1};
+	static int[] dy = {1, -1, 0, 0};
+	
+	static boolean[] vis;
+	static char[][] map;
+	
+	static boolean valid(int i, int j) {
+		return i >= 0 && i < n && j >= 0 && j < m && map[i][j] != color && map[i][j] != '.' && !vis[map[i][j]];
+	}
+
+	public static void main(String[] args) throws FileNotFoundException {
+		Scanner sc = new Scanner(System.in);
+		
+		n = sc.nextInt();
+		m = sc.nextInt();
+		
+		color = sc.next().charAt(0);
+		
+		vis = new boolean[200];
+		map = new char[n][m];
+		
+		for(int i = 0;i < n;i++)
+			map[i] = sc.next().toCharArray();
+		
+		int count = 0;
+		for(int i = 0;i < n;i++) {
+			for(int j = 0;j < m;j++) {
+				if(map[i][j] == color) {
+					for(int ii = 0;ii < 4;ii++) {
+						int ni = i + dx[ii], nj = j + dy[ii];
+						if(valid(ni, nj)) {
+							count++;
+							vis[map[ni][nj]] = true;
+						}
+					}
+				}
+			}
+		}
+		
+		out.println(count);
+
+		out.flush();
+	}
+
+	static void Arrayssort(int[] a) {
+		int n = a.length;// shuffle, then sort
+		for (int i = 0; i < n; i++) {
+			int oi = random.nextInt(n);
+			int temp = a[oi];
+			a[oi] = a[i];
+			a[i] = temp;
+		}
+		java.util.Arrays.sort(a);
+	}
+
+	private static class Scanner {
+		public BufferedReader reader;
+		public StringTokenizer st;
+
+		public Scanner(InputStream file) throws FileNotFoundException {
+			reader = new BufferedReader(new InputStreamReader(file));
+			st = null;
+		}
+
+		public String next() {
+			while (st == null || !st.hasMoreTokens()) {
+				try {
+					String line = reader.readLine();
+					if (line == null)
+						return null;
+					st = new StringTokenizer(line);
+				} catch (Exception e) {
+					throw (new RuntimeException());
+				}
+			}
+			return st.nextToken();
+		}
+
+		public int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {
+			return Long.parseLong(next());
+		}
+
+		public double nextDouble() {
+			return Double.parseDouble(next());
+		}
+
+		public String nextLine() throws IOException {
+			return reader.readLine();
+		}
+	}
+
+}
