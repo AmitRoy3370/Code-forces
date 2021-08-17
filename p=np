@@ -1,0 +1,19 @@
+
+import java.util.Scanner;
+
+public class Teamscode_Summer_2021_A_p_equal_np {
+
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit) {
+        
+      long x=in.nextLong();
+      
+      long y=in.nextLong();
+        
+        System.out.println( (x+y+1) );
+        
+    }
+    
+}
+//2 2
