@@ -1,0 +1,64 @@
+//package codeforces;		
+import java.io.*;
+import java.util.*;
+public class Solution {
+	static class FastReader {
+		BufferedReader br;
+		StringTokenizer st;
+
+		public FastReader() {
+			br = new BufferedReader(new InputStreamReader(System.in));
+		}
+
+		String next() {
+			while (st == null || !st.hasMoreElements()) {
+				try {
+					st = new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return st.nextToken();
+		}
+
+		int ni() {
+			return Integer.parseInt(next());
+		}
+
+		long nl() {
+			return Long.parseLong(next());
+		}
+
+		double nd() {
+			return Double.parseDouble(next());
+		}
+
+		String nextLine() {
+			String str = "";
+			try {
+				str = br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return str;
+		}
+	}
+
+	
+	public static void main(String[] args) throws java.lang.Exception {
+		FastReader fr = new FastReader();
+		PrintWriter out = new PrintWriter(System.out);
+		int t = fr.ni();
+		while(t-->0){
+			int n = fr.ni();
+			String str = fr.next();
+			String temp = "2020";
+			String a = str.substring(0,1)+str.substring(n-3,n);
+			String b = str.substring(0,2)+str.substring(n-2,n);
+			String c = str.substring(0,3)+str.substring(n-1,n);
+			if(str.substring(0, 4).equals(temp) || str.substring(n-4,n).equals(temp) || a.equals(temp) || b.equals(temp) || c.equals(temp))out.println("YES");
+			else out.println("NO");
+		}
+		out.close();
+	}
+}
