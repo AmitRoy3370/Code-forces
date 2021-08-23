@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int m=sc.nextInt();
+		sc.nextLine();
+		String ori=sc.nextLine();
+		String nw=sc.nextLine();
+		int count=0;
+		for(int i=0;i<m;i++){
+		    int o=Integer.parseInt(String.valueOf(ori.charAt(i)));
+		    int n=Integer.parseInt(String.valueOf(nw.charAt(i)));
+		    int min=o<n?o:n;
+		    int max=o>n?o:n;
+		    if(max-min<=5){
+		        count=count+max-min;
+		    }else{
+		        count=count+(9-max)+min+1;
+		    }
+		}
+		System.out.println(count);
+	}
+}
+
