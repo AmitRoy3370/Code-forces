@@ -1,0 +1,121 @@
+import java.util.*;
+import java.io.*;
+
+public class C_Knapsack{
+    public static void main(String[] args) {
+        FastScanner s= new FastScanner();
+        StringBuilder res = new StringBuilder();
+        int t=s.nextInt();
+        int p=0;
+        while(p<t){
+        int n=s.nextInt();
+        long w=s.nextLong();
+        long array[]= new long[n];
+        long parray[]= new long[n+1];
+        HashMap<Long,Queue<Integer>> map = new HashMap<Long,Queue<Integer>>();
+        for(int i=0;i<n;i++){
+            array[i]=s.nextLong();
+            parray[i]=array[i];
+            if(map.containsKey(array[i])){
+                map.get(array[i]).add(i);
+            }
+            else{
+                Queue<Integer> obj = new LinkedList<Integer>();
+                obj.add(i);
+                map.put(array[i],obj);
+            }
+        }
+        Arrays.sort(array);
+        ArrayList<Long> yo= new ArrayList<Long>();
+        int flag=0;
+        long index=-1;
+        long sum=0;
+        long mid=0;
+        if(w%2==0){
+            mid=w/2;
+        }
+        else{
+            mid=w/2;
+            mid++;
+        }
+        for(int i=0;i<n;i++){
+            if(array[i]>w){
+                break;
+            }
+            if(array[i]<=w && array[i]>=mid){
+                flag=1;
+                index=array[i];
+                break;
+
+            }
+            sum+=array[i];
+            yo.add(array[i]);
+            if(sum>=mid && sum<=w){
+                 break;
+            }
+        }
+        if(flag==1){
+            res.append("1\n");
+            res.append((map.get(index).poll()+1)+"\n");
+        }
+      else  if(sum>=mid && sum<=w){
+          res.append(yo.size()+"\n");
+          for(int i=0;i<yo.size();i++){
+             long num=yo.get(i);
+              res.append((map.get(num).poll()+1)+" ");
+          }
+          res.append("\n");
+        }
+        else{
+            res.append("-1\n");
+        }
+        p++;
+    }
+    System.out.println(res);
+    }
+    static class FastScanner {
+		BufferedReader br;
+		StringTokenizer st;
+ 
+		public FastScanner(String s) {
+			try {
+				br = new BufferedReader(new FileReader(s));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+ 
+		public FastScanner() {
+			br = new BufferedReader(new InputStreamReader(System.in));
+		}
+ 
+		String nextToken() {
+			while (st == null || !st.hasMoreElements()) {
+				try {
+					st = new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return st.nextToken();
+		}
+ 
+		int nextInt() {
+			return Integer.parseInt(nextToken());
+		}
+ 
+		long nextLong() {
+			return Long.parseLong(nextToken());
+		}
+ 
+		double nextDouble() {
+			return Double.parseDouble(nextToken());
+		}
+	}
+
+
+
+
+}
