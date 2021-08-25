@@ -1,0 +1,72 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.StringTokenizer;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        initReader();
+            int n = nextInt();
+            if(n == 0){
+                System.out.println("O-|-OOOO");
+            }
+            else{
+                print(n);
+            }
+    }
+
+    private static void print(int n) {
+        HashMap<Integer, String> dic = new HashMap<Integer, String>();
+        dic.put(0, "O-|-OOOO");
+        dic.put(1, "O-|O-OOO");
+        dic.put(2, "O-|OO-OO");
+        dic.put(3, "O-|OOO-O");
+        dic.put(4, "O-|OOOO-");
+        dic.put(5, "-O|-OOOO");
+        dic.put(6, "-O|O-OOO");
+        dic.put(7, "-O|OO-OO");
+        dic.put(8, "-O|OOO-O");
+        dic.put(9, "-O|OOOO-");
+        StringBuilder result = new StringBuilder();
+        while (n > 0) {
+            int a = n % 10;
+            result.append(dic.get(a) + "\n");
+            n /= 10;
+        }
+        System.out.print(result);
+    }
+
+    static BufferedReader reader;
+    static StringTokenizer tokenizer;
+
+    public static void initReader() {
+        reader = new BufferedReader(new InputStreamReader(System.in));
+        tokenizer = new StringTokenizer("");
+    }
+
+    static String next() throws IOException {
+        while (!tokenizer.hasMoreTokens()) {
+            tokenizer = new StringTokenizer(reader.readLine());
+        }
+        return tokenizer.nextToken();
+    }
+
+    static String nextLine() throws IOException {
+        return reader.readLine();
+    }
+
+    static int nextInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+
+    static long nextLong() throws IOException {
+        return Long.parseLong(next());
+    }
+
+    static Double nextDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+
+}
