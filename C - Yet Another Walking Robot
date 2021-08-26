@@ -1,0 +1,44 @@
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+
+public class L {
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		int t=scanner.nextInt();
+		while(t-->0){
+			int n=scanner.nextInt();
+			String string=scanner.next();
+			char c[]=string.toCharArray();
+			HashMap<Long, Integer> map=new HashMap<Long,Integer>();
+			long x=500000,y=500000;
+			long key=x*1000000+y;
+			int ansl=-1,ansr=99999999;
+			map.put(key, 0);
+			for(int i=0;i<n;i++){
+				if(c[i]=='U'){
+					x--;
+				}else if(c[i]=='D'){
+					x++;
+				}else if(c[i]=='L'){
+					y--;
+				}else {
+					y++;
+				}
+				key=x*1000000+y;
+				if(map.containsKey(key)){
+					if(i-map.get(key)<ansr-ansl){
+						ansr=i+1;
+						ansl=map.get(key)+1;
+					}
+				}
+					map.put(key, i+1);
+				
+			}
+			System.out.println(ansl==-1?-1:(ansl+" "+ansr));
+		}
+	}
+}
+
+	 									  			  	  						  		
