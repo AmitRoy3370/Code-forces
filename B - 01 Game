@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class B {
+
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int t = scn.nextInt();
+        scn.nextLine();
+        while (t-- > 0) {
+            char c[] = scn.nextLine().toCharArray();
+            int ones = 0;
+            int zeros = 0;
+            for (int i = 0; i < c.length; ++i) {
+                if (c[i] == '1') {
+                    ones++;
+                } else {
+                    zeros++;
+                }
+            }
+            if (Math.min(ones, zeros) % 2 == 1) {
+                System.out.println("DA");
+            } else {
+                System.out.println("NET");
+            }
+        }
+    }
+}
