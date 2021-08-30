@@ -1,0 +1,29 @@
+import java.util.*;
+import java.io.*;
+
+public class Solution{
+    public static void main(String[] args) throws Exception{
+        Scanner scan = new Scanner(System.in);
+        int T = scan.nextInt();
+        while(T--!=0){
+            int n= scan.nextInt();
+            int mat[][] = new int[n-1][2];
+            int idx =0;
+            int prev = n;
+            int cur = n-1;
+            while(cur>=1){
+                mat[idx][0] = cur;
+                mat[idx][1] = prev;
+                prev = ((cur+prev)/2) + ((cur+prev)%2==0?0:1);
+                cur--;
+                idx++;
+            }
+            System.out.println(prev);
+            for(int i=0;i<n-1;i++){
+                System.out.println(mat[i][0]+" "+mat[i][1]);
+            }
+        }
+        scan.close();
+    }
+}
+			  	   		   	  		 					 		 	
