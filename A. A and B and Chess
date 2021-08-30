@@ -1,0 +1,42 @@
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+public class A519 {
+    public static void main(String[] args) throws IOException{
+        StringBuffer ans = new StringBuffer();
+        StringTokenizer st;
+        BufferedReader f = new BufferedReader(new InputStreamReader(System.in));
+        HashMap<Character, Integer> hashMap = new HashMap<>();
+        hashMap.put('r', 5);
+        hashMap.put('q', 9);
+        hashMap.put('n', 3);
+        hashMap.put('b', 3);
+        hashMap.put('k', 0);
+        hashMap.put('p', 1);
+        int b = 0;
+        int w = 0;
+        for(int i = 0; i < 8; i++){
+            st = new StringTokenizer(f.readLine());
+            String str = st.nextToken();
+            for(int x = 0; x < 8; x++){
+                if(str.charAt(x) == '.') continue;
+                if(str.substring(x,x+1).toLowerCase(Locale.ROOT).equals(str.substring(x,x+1))){
+                    b+=hashMap.get(str.charAt(x));
+                }else
+                    w+=hashMap.get(str.substring(x,x+1).toLowerCase(Locale.ROOT).charAt(0));
+            }
+        }
+
+        f.close();
+        if(b > w){
+            ans.append("Black");
+        }else if(b == w)
+            ans.append("Draw");
+        else
+            ans.append("White");
+        System.out.println(ans);
+    }
+
+}
