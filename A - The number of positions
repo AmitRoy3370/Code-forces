@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class NuberOfPositions124A {
+	public static void main(String args[]) {
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
+		int a = scan.nextInt();
+		int b = scan.nextInt();
+		int end = 0;
+		int count = 0;
+		for(int i = a+1; i<=n && b>=0; i++) {
+			count++;
+			b--;
+		}
+		System.out.println(count);
+	}
+}
