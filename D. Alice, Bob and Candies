@@ -1,0 +1,93 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int testCases,n;
+    
+    static int a[];
+    
+    static void solve(){
+        
+        int left=0,right=n-1,moves=0;
+        
+        long prev=0,leftSum=0,rightSum=0;
+        
+        boolean alice=true;
+        
+       while (left <= right)
+    {
+        moves++;
+        long cur = 0;
+        if (alice)
+        {
+            while (left <= right && cur <= prev)
+                cur += a[left++];
+            leftSum += cur;
+        }
+        else
+        {
+            while (left <= right && cur <= prev)
+                cur += a[right--];
+            rightSum += cur;
+        }
+       
+        alice = !alice;
+        prev = cur;
+    }
+        System.out.println( (moves)+" "+leftSum+" "+rightSum);
+        
+    }
+    
+    public static void main(String args[]) {
+   
+   testCases=in.nextInt();
+   
+   for(int t=0;t<testCases;t++){
+       
+       n=in.nextInt();
+       
+       a=new int[n];
+       
+       for(int i=0;i<n;i++){
+           
+           a[i]=in.nextInt();
+           
+       }
+       
+       if(n==1){
+           
+           System.out.println(1+" "+a[0]+" "+0);
+           
+       }else{
+       
+       solve();
+       
+       }
+       
+   }
+   
+    }
+}
+
+/*
+
+7
+11
+3 1 4 1 5 9 2 6 5 3 5
+1
+1000
+3
+1 1 1
+13
+1 2 3 4 5 6 7 8 9 10 11 12 13
+2
+2 1
+6
+1 1 1 1 1 1
+7
+1 1 1 1 1 1 1
+
+
+*/
