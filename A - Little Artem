@@ -1,0 +1,36 @@
+    import java.util.*;
+    public class LittleArtem {
+     
+    	public static void main(String args[])
+    	{
+    		Scanner sc=new Scanner(System.in);
+    		int l=sc.nextInt();
+    		for(int l1=1;l1<=l;l1++)
+    		{
+    			int q=sc.nextInt();
+    			int p=sc.nextInt();
+    			char a[][]=new char[q][p];
+    			for(int i=0;i<q;i++)
+    			{
+    				for(int j=0;j<p;j++)
+    				{
+    					if((i==q-1) &&(j==p-1))
+    					{
+    						a[i][j]='W';
+    					}
+    					else
+    						a[i][j]='B';
+    				}
+    			}
+    			for(int i=0;i<q;i++)
+    			{
+    				for(int j=0;j<p;j++)
+    				{
+    					System.out.print(a[i][j]);
+    				}
+    				System.out.println();
+    			}
+    		}
+    		sc.close();
+    	}
+    }
