@@ -1,0 +1,338 @@
+import java.text.DecimalFormat;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+public class cf2 {
+    static PrintWriter out;
+    static int MOD = 1000000007;
+    static FastReader scan;
+
+    /*-------- I/O using short named function ---------*/
+    public static String ns() {
+        return scan.next();
+    }
+
+    public static int ni() {
+        return scan.nextInt();
+    }
+
+    public static long nl() {
+        return scan.nextLong();
+    }
+
+    public static double nd() {
+        return scan.nextDouble();
+    }
+
+    public static String nln() {
+        return scan.nextLine();
+    }
+
+    public static void p(Object o) {
+        out.print(o);
+    }
+
+    public static void ps(Object o) {
+        out.print(o + " ");
+    }
+
+    public static void pn(Object o) {
+        out.println(o);
+    }
+
+    /*-------- for output of an array ---------------------*/
+    static void iPA(int arr[]) {
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) output.append(arr[i] + " ");
+        out.println(output);
+    }
+
+    static void lPA(long arr[]) {
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) output.append(arr[i] + " ");
+        out.println(output);
+    }
+
+    static void sPA(String arr[]) {
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) output.append(arr[i] + " ");
+        out.println(output);
+    }
+
+    static void dPA(double arr[]) {
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) output.append(arr[i] + " ");
+        out.println(output);
+    }
+
+    /*-------------- for input in an array ---------------------*/
+    static void iIA(int arr[]) {
+        for (int i = 0; i < arr.length; i++) arr[i] = ni();
+    }
+
+    static void lIA(long arr[]) {
+        for (int i = 0; i < arr.length; i++) arr[i] = nl();
+    }
+
+    static void sIA(String arr[]) {
+        for (int i = 0; i < arr.length; i++) arr[i] = ns();
+    }
+
+    static void dIA(double arr[]) {
+        for (int i = 0; i < arr.length; i++) arr[i] = nd();
+    }
+
+    /*------------ for taking input faster ----------------*/
+    static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+
+        public FastReader() {
+            br = new BufferedReader(new InputStreamReader(System.in));
+        }
+
+        String next() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+
+        double nextDouble() {
+            return Double.parseDouble(next());
+        }
+
+        String nextLine() {
+            String str = "";
+            try {
+                str = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+
+    public static ArrayList<Integer> sieveOfEratosthenes(int n) {
+        // Create a boolean array
+        // "prime[0..n]" and
+        // initialize all entries
+        // it as true. A value in
+        // prime[i] will finally be
+        // false if i is Not a
+        // prime, else true.
+        boolean prime[] = new boolean[n + 1];
+        for (int i = 0; i <= n; i++)
+            prime[i] = true;
+
+        for (int p = 2; p * p <= n; p++) {
+            // If prime[p] is not changed, then it is a
+            // prime
+            if (prime[p] == true) {
+                // Update all multiples of p
+                for (int i = p * p; i <= n; i += p)
+                    prime[i] = false;
+            }
+        }
+        ArrayList<Integer> arr = new ArrayList<>();
+        // store all prime numbers
+        for (int i = 2; i <= n; i++) {
+            if (prime[i] == true)
+                arr.add(i);
+        }
+        return arr;
+    }
+
+    // Method to check if x is power of 2
+    static boolean isPowerOfTwo(int x) {
+        return x != 0 && ((x & (x - 1)) == 0);
+    }
+
+    //Method to return lcm of two numbers
+    static int gcd(int a, int b) {
+        return a == 0 ? b : gcd(b % a, a);
+    }
+
+    //Method to count digit of a number
+    static int countDigit(long n) {
+        String sex = Long.toString(n);
+        return sex.length();
+    }
+
+    static void reverse(int a[]) {
+        int i, k, t;
+        int n = a.length;
+        for (i = 0; i < n / 2; i++) {
+            t = a[i];
+            a[i] = a[n - i - 1];
+            a[n - i - 1] = t;
+        }
+    }
+    static long nCr(long n, long r)
+    {
+        long p = 1, k = 1;
+
+        // C(n, r) == C(n, n-r),
+        // choosing the smaller value
+        if (n - r < r) {
+            r = n - r;
+        }
+
+        if (r != 0) {
+            while (r > 0) {
+                p *= n;
+                k *= r;
+
+                // gcd of p, k
+                long m = __gcd(p, k);
+
+                // dividing by gcd, to simplify
+                // product division by their gcd
+                // saves from the overflow
+                p /= m;
+                k /= m;
+
+                n--;
+                r--;
+            }
+
+            // k should be simplified to 1
+            // as C(n, r) is a natural number
+            // (denominator should be 1 ) .
+        }
+        else {
+            p = 1;
+        }
+
+        // if our approach is correct p = ans and k =1
+        return p;
+    }
+    static long __gcd(long n1, long n2)
+    {
+        long gcd = 1;
+
+        for (int i = 1; i <= n1 && i <= n2; ++i) {
+            // Checks if i is factor of both integers
+            if (n1 % i == 0 && n2 % i == 0) {
+                gcd = i;
+            }
+        }
+        return gcd;
+    }
+
+    // Returns factorial of n
+    static long fact(long n)
+    {
+        long res = 1;
+        for (long i = 2; i <= n; i++)
+            res = res * i;
+        return res;
+    }
+    // Get all prime numbers till N using seive of Eratosthenes
+    public static List<Integer> getPrimesTill(int n){
+        boolean[] arr = new boolean[n+1];
+        List<Integer> primes = new LinkedList<>();
+        for(int i=2; i<=n; i++){
+            if(!arr[i]){
+                primes.add(i);
+                for(long j=(i*i); j<=n; j+=i){
+                    arr[(int)j] = true;
+                }
+            }
+        }
+        return primes;
+    }
+
+    static final Random random = new Random();
+
+    //Method for sorting
+    static void ruffleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+            int j = random.nextInt(n);
+            int temp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = temp;
+        }
+        Arrays.sort(arr);
+    }
+
+    static void sortadv(long[] a) {
+        ArrayList<Long> l = new ArrayList<>();
+        for (long value : a) {
+            l.add(value);
+        }
+        Collections.sort(l);
+        for (int i = 0; i < l.size(); i++)
+            a[i] = l.get(i);
+    }
+
+    //Method for checking if a number is prime or not
+    static boolean isPrime(int n) {
+        if (n <= 1) return false;
+        if (n <= 3) return true;
+        if (n % 2 == 0 || n % 3 == 0) return false;
+        for (int i = 5; i * i <= n; i = i + 6)
+            if (n % i == 0 || n % (i + 2) == 0)
+                return false;
+        return true;
+    }
+
+    public static void main(String[] args) throws java.lang.Exception {
+        OutputStream outputStream = System.out;
+        out = new PrintWriter(outputStream);
+        scan = new FastReader();
+        //for fast output sometimes
+        StringBuilder sb1 = new StringBuilder();
+
+        // prefix sum, *dp , odd-even segregate , *brute force(n=100)(jo bola wo kar) , 2 pointer , pattern , see contraints
+        // but first observe!   maybe just watch i-o like ans-x-1,y for input x,y;
+        // divide wale ques me always check whether divisor 1?  || probability mei mostly (1-p)...
+        int t = ni();
+
+        while (t-- != 0) {
+            int a=ni();
+            int b=ni();
+            long c=nl();
+            int d=ni();
+            if(c<=d&&a-b>0)
+                pn(-1);
+            else if(b>=a)
+                pn(b);
+            else
+                pn(b+(long)Math.ceil((double)(a-b)/(c-d))*c);
+        }
+        out.flush();
+        out.close();
+    }
+    public static class Pair implements Comparable<Pair>{
+        int a, b;
+        public Pair(int x,int y){
+            a=x;b=y;
+        }
+        @Override
+        public int compareTo(Pair o) {
+            if(this.a!=o.a)
+                return this.a-o.a;
+            else
+                return o.b-this.b;
+        }
+    }
+}
+
+
+
