@@ -1,0 +1,103 @@
+import java.io.*;
+import java.util.*;
+
+public class test {
+
+    public static void main(String[] args) {
+        FastScanner sc = new FastScanner();
+        int n = sc.ni();
+        int[] b = new int[n];
+        for (int i = 0; i < n; i++)
+            b[i] = sc.ni();
+        int[] a = new int[n];
+        int[] x = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (i == 0)
+                x[i] = 0;
+            else
+                x[i] = Math.max(x[i - 1], a[i - 1]);
+            a[i] = b[i] + x[i];
+        }
+        for (int i = 0; i < n; i++)
+            System.out.print(a[i] + " ");
+    }
+
+
+    static class FastScanner {
+        BufferedReader br;
+        StringTokenizer st;
+
+        public FastScanner() {
+            br = new BufferedReader(new InputStreamReader(System.in), 32768);
+            st = null;
+        }
+
+        String next() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+
+        int ni() {
+            return Integer.parseInt(next());
+        }
+
+        int[][] graph(int N, int[][] edges) {
+            int[][] graph = new int[N][];
+            int[] sz = new int[N];
+            for (int[] e : edges) {
+                sz[e[0]] += 1;
+                sz[e[1]] += 1;
+            }
+            for (int i = 0; i < N; i++) {
+                graph[i] = new int[sz[i]];
+            }
+            int[] cur = new int[N];
+            for (int[] e : edges) {
+                graph[e[0]][cur[e[0]]] = e[1];
+                graph[e[1]][cur[e[1]]] = e[0];
+                cur[e[0]] += 1;
+                cur[e[1]] += 1;
+            }
+            return graph;
+        }
+
+        int[] intArray(int N, int mod) {
+            int[] ret = new int[N];
+            for (int i = 0; i < N; i++)
+                ret[i] = ni() + mod;
+            return ret;
+        }
+
+        long nl() {
+            return Long.parseLong(next());
+        }
+
+        long[] longArray(int N, long mod) {
+            long[] ret = new long[N];
+            for (int i = 0; i < N; i++)
+                ret[i] = nl() + mod;
+            return ret;
+        }
+
+        double nd() {
+            return Double.parseDouble(next());
+        }
+
+        String nextLine() {
+            String str = "";
+            try {
+                str = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+
+}
