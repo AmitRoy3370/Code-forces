@@ -1,0 +1,27 @@
+
+import java.io.*;
+import java.util.*;
+
+public class CF766D2A {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        
+        String a = bf.readLine();
+        String b = bf.readLine();
+        
+        if (a.equals(b)) {
+            System.out.println(-1);
+        } else {
+            int max;
+            if (a.length() > b.length()) {
+                max = a.length();
+            } else {
+                max = b.length();
+            }
+            
+            System.out.println(max);
+        }
+    }
+    
+}
