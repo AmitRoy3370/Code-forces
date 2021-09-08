@@ -1,0 +1,79 @@
+// package CFR_725_DIV_3;
+
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class CFLV {
+    static class Reader{
+        private final BufferedReader reader;
+        private StringTokenizer tokenizer;
+        Reader(InputStream input)
+        {
+            this.reader = new BufferedReader(new InputStreamReader(input));
+            this.tokenizer = new StringTokenizer("");
+        }
+        public String next() throws IOException {
+            while(!tokenizer.hasMoreTokens())
+            {
+                tokenizer = new StringTokenizer(reader.readLine());
+            }
+            return tokenizer.nextToken();
+        }
+        public int nextInt() throws IOException
+        {
+            return Integer.parseInt(next());
+        }
+        public double nextDouble() throws IOException
+        {
+            return Double.parseDouble(next());
+        }
+        public long nextLong() throws IOException
+        {
+            return Long.parseLong(next());
+        }
+
+        public int[] nextIntArr(int n) throws IOException {
+            int[] arr = new int[n];
+            for(int i=0;i<n;i++)arr[i]=nextInt();
+            return arr;
+        }
+        public long[] nextLongArr(int n)throws IOException {
+            long[] arr = new long[n];
+            for(int i=0;i<n;i++)arr[i]=nextLong();
+            return arr;
+        }
+        public char[] nextCharArr(int n) throws IOException {
+            char[] arr = new char[n];
+            for(int i=0;i<n;i++)arr[i] = next().charAt(0);
+            return arr;
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        Reader scan = new Reader(System.in);
+        int T = scan.nextInt();
+        BufferedOutputStream b = new BufferedOutputStream(System.out);
+        StringBuffer sb = new StringBuffer();
+        while (T-->0)
+        {
+            int n = scan.nextInt();
+            sb.append(solve(n)+"\n");
+        }
+        b.write((sb.toString()).getBytes());
+        b.flush();
+    }
+
+    private static String solve(int n) {
+        int no8 = (n%4==0) ? n/4 : n/4 + 1;
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<n-no8;i++)
+        {
+            sb.append(9);
+        }
+        for (int i=0;i<no8;i++)
+        {
+            sb.append(8);
+        }
+        return sb.toString();
+    }
+}
