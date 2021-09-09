@@ -1,0 +1,18 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+public class Codeforces{
+  public static void main(String[] args) throws Exception{
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int t = Integer.parseInt(br.readLine());
+    while(t-- > 0){
+      String[] str = br.readLine().split(" ");
+      int hr = Integer.parseInt(str[0]);
+      int min = Integer.parseInt(str[1]);
+      int ans = (23 - hr) * 60 + (60 - min);
+      System.out.println(ans);
+    }
+  }
+}
