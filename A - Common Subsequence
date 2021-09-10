@@ -1,0 +1,52 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Main {
+
+  public static void main(String[] args) {
+    Scanner s = new Scanner(System.in);
+
+    int len = s.nextInt();
+
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    int res = 0;
+    int odd = 0;
+    int even = 0;
+    int floor = 0;
+    int max = 0;
+    int min = 0;
+    int d = 0;
+    StringBuilder sb = new StringBuilder();
+    String str;
+    boolean placeFound = false;
+    for (int i = 0; i <len; i++) {
+      a = s.nextInt();
+      b = s.nextInt();
+      String fina = "NO";
+      Set<Integer> set = new HashSet<>();
+      for(int k = 0; k < a; k++) {
+        set.add(s.nextInt());
+      }
+      int[]num = new int[b];
+      for(int k = 0; k < b; k++) {
+        num[k] = s.nextInt();
+
+      }
+      for(int k = 0; k < b; k++) {
+        if(set.contains(num[k])){
+          fina = "YES" + "\n1 " + num[k];
+          break;
+        }
+      }
+      System.out.println(fina);
+
+    }
+
+    s.close();
+  }
+
+}
