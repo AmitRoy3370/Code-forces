@@ -1,0 +1,31 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+    
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		long n = sc.nextLong();
+		long m = sc.nextLong();
+		
+		long maxCandidate = n-(m-1);
+		long maxWays = nc2(maxCandidate);
+		
+		long a = n/m;
+		long b = n%m;
+		long minWays = b*nc2(a+1)+(m-b)*nc2(a);
+		System.out.println(minWays+" "+maxWays);
+	}
+	
+	private static long nc2(long n){
+	    if(n<2)
+	        return 0;
+	    return (n*(n-1))/2;
+	}
+}
