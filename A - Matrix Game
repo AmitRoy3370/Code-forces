@@ -1,0 +1,117 @@
+//package com.company;
+import java.awt.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+import java.util.*;
+
+public class Main {
+
+    //class to take fast input for CP :)
+    static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+
+        public FastReader() {
+            br = new BufferedReader(
+                    new InputStreamReader(System.in));
+        }
+
+        String next() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+
+        double nextDouble() {
+            return Double.parseDouble(next());
+        }
+
+        String nextLine() {
+            String str = "";
+            try {
+                str = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+
+    //start from here
+    static void rev(int[] a){
+        int l = 0;
+        int r = a.length-1;
+        while(r>l){
+            int temp = a[r];
+            a[r] = a[l];
+            a[l] = temp;
+            l ++;
+            r --;
+        }
+    }
+
+    public static void main(String[] args) {
+        FastReader sc = new FastReader();
+        int tt = sc.nextInt();
+        for(int t = 0 ; t < tt ; t++){
+            int col = sc.nextInt();
+            int row = sc.nextInt();
+            int[][] arr = new int[col][row];
+            for(int i = 0; i < col ; i++){
+                for(int j = 0; j < row ; j++){
+                    arr[i][j] = sc.nextInt();
+                }
+            }
+            int r = 0;
+            for(int i = 0 ; i < col ; i++){
+                int countZero = 0;
+                for(int j : arr[i]){
+                    if(j == 0){
+                        countZero++;
+                    }
+                }
+                if(countZero == row){
+                    r ++;
+                }
+            }
+            int c = 0;
+            for(int i = 0 ; i < row ; i++){
+                int countCol = 0;
+                for(int j = 0 ; j < col ; j++){
+                    if(arr[j][i] == 0)
+                        countCol++;
+                }
+                if(countCol == col)
+                    c ++;
+            }
+            int minn = Math.min(c,r);
+            if(minn % 2 == 0)
+                System.out.println("Vivek");
+            else
+                System.out.println("Ashish");
+        }
+    }
+}
+
+
+
+
+
+
+
