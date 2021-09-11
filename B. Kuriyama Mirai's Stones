@@ -1,0 +1,193 @@
+import java.util.Scanner;
+
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int n,l,r,m,type;
+    
+    static long a[],sorted[],preA[],preSorted[];
+    
+    static void merge(long a[],int left,int right,int mid){
+        
+        int n1=mid-left+1,n2=right-mid;
+        
+        long L[]=new long[n1];
+        
+        long R[]=new long[n2];
+        
+        for(int i=0;i<n1;i++){
+            
+            L[i]=a[left+i];
+            
+        }
+        
+        for(int i=0;i<n2;i++){
+            
+            R[i]=a[mid+1+i];
+            
+        }
+        
+        int i=0,j=0,k=left;
+        
+        while(i<n1 && j<n2){
+            
+            if(L[i]<=R[j] ){
+                
+                a[k]=L[i];
+                
+                i++;
+                
+            }else{
+                
+                a[k]=R[j];
+                
+                j++;
+                
+            }
+            
+            k++;
+            
+        }
+        
+        while(i<n1){
+            
+            a[k]=L[i];
+            
+            i++;
+            k++;
+            
+        }
+        
+        while(j<n2){
+            
+            a[k]=R[j];
+            
+            j++;
+            k++;
+            
+        }
+        
+    }
+    
+    static void sort(long a[],int left,int right){
+        
+        if(left>=right){
+            
+            return;
+            
+        }
+        
+        int mid=(left+right)/2;
+        
+        sort(a,left,mid);
+        
+        sort(a,mid+1,right);
+        
+        merge(a,left,right,mid);
+        
+    }
+    
+    static void solve(){
+        
+        if(type==1){
+            
+            System.out.println( preA[r]-preA[l-1] );
+            
+        }else{
+            
+            System.out.println( preSorted[r]-preSorted[l-1] );
+            
+        }
+        
+    }
+    
+    public static void main(String args[]) {
+      
+      n=in.nextInt();
+      
+      a=new long[n+1];
+      
+      sorted=new long[n+1];
+      
+      preA=new long[n+1];
+      
+      preSorted=new long[n+1];
+      
+      for(int i=1;i<=n;i++){
+          
+          a[i]=in.nextLong();
+          
+          sorted[i]=a[i];
+          
+      }
+     
+     sort(sorted,1,n ); 
+     
+     /*  for(long i: sorted){
+         
+         System.out.print(i+" ");
+         
+     }
+     
+     System.out.println();*/
+     
+    /* for(int i=1;i<=n/2;i++){
+         
+         long temp=sorted[i];
+         sorted[i]=sorted[n-i-1];
+         sorted[n-i-1]=temp;
+         
+     }*/
+     
+    // Arrays.sort(sorted);
+     
+     long sum=0,sum1=0;
+     
+     for(int i=1;i<=n;i++){
+         
+         sum+=a[i];
+         
+         sum1+=sorted[i];
+         
+         preA[i]=sum;
+         
+         preSorted[i]=sum1;
+         
+     }
+     
+   /*  for(long i: sorted){
+         
+         System.out.print(i+" ");
+         
+     }
+     
+     System.out.println();*/
+     
+      m=in.nextInt();
+      
+      for(int i=0;i<m;i++){
+      
+           type=in.nextInt();    
+          l=in.nextInt();
+          r=in.nextInt();
+          
+        solve();  
+          
+      }
+      
+    }
+}
+
+/*
+
+6
+6 4 2 7 2 7
+3
+2 3 6
+1 3 4
+1 1 6
+
+*/
+
