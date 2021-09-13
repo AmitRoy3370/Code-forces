@@ -1,0 +1,24 @@
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class DuffAndMeat {
+	public static void main(String[]args) throws NumberFormatException, IOException {
+		InputStreamReader is = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(is);
+		int n = Integer.parseInt(br.readLine());
+		int min = Integer.MAX_VALUE;
+		int spent = 0;
+		for(int i =0; i<n; i++) {
+			String[]vals = br.readLine().split(" ");
+			int a = Integer.parseInt(vals[0]);
+			int p = Integer.parseInt(vals[1]);
+			
+			min = Math.min(min, p);
+			spent+=min*a;
+		}
+		
+		System.out.println(spent);
+	}
+}
