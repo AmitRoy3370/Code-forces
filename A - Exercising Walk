@@ -1,0 +1,142 @@
+import java.util.*;
+import java.io.*;
+
+public class a{
+
+	public static void main(String[] args){
+		JS scan = new JS();
+		int t = scan.nextInt();
+		for(int q = 1; q <= t; q++){
+			int a = scan.nextInt();
+			int b = scan.nextInt();
+			int c = scan.nextInt();
+			int d = scan.nextInt();
+
+			int x = scan.nextInt();
+			int y = scan.nextInt();
+			int x1 = scan.nextInt();
+			int y1 = scan.nextInt();
+			int x2 = scan.nextInt();
+			int y2 = scan.nextInt();
+			boolean bad = false;
+
+			if(x1 == x2){
+				if(a+b > 0){
+					bad = true;
+				}
+			}
+			if(y1 == y2){
+				if(c+d > 0){
+					bad = true;
+				}
+			}
+
+			if(a > b){
+				if(x-x1 < a-b){
+					bad = true;
+				}
+			}
+			if(b > a){
+				if(x2-x < b-a){
+					bad = true;
+				}
+			}
+			if(c > d){
+				if(y-y1 < c-d){
+					bad = true;
+				}
+			}
+			if(d > c){
+				if(y2-y < d-c){
+					bad = true;
+				}
+			}
+			System.out.println(bad? "NO" : "YES");
+		}
+	}
+
+	static class JS{
+		public int BS = 1<<16;
+		public char NC = (char)0;
+		byte[] buf = new byte[BS];
+		int bId = 0, size = 0;
+		char c = NC;
+		double num = 1;
+		BufferedInputStream in;
+ 
+		public JS() {
+			in = new BufferedInputStream(System.in, BS);
+		}
+ 
+		public JS(String s) throws FileNotFoundException {
+			in = new BufferedInputStream(new FileInputStream(new File(s)), BS);
+		}
+ 
+		public char nextChar(){
+			while(bId==size) {
+				try {
+					size = in.read(buf);
+				}catch(Exception e) {
+					return NC;
+				}				
+				if(size==-1)return NC;
+				bId=0;
+			}
+			return (char)buf[bId++];
+		}
+ 
+		public int nextInt() {
+			return (int)nextLong();
+		}
+ 
+		public long nextLong() {
+			num=1;
+			boolean neg = false;
+			if(c==NC)c=nextChar();
+			for(;(c<'0' || c>'9'); c = nextChar()) {
+				if(c=='-')neg=true;
+			}
+			long res = 0;
+			for(; c>='0' && c <='9'; c=nextChar()) {
+				res = (res<<3)+(res<<1)+c-'0';
+				num*=10;
+			}
+			return neg?-res:res;
+		}
+ 
+		public double nextDouble() {
+			double cur = nextLong();
+			return c!='.' ? cur:cur+nextLong()/num;
+		}
+ 
+		public String next() {
+			StringBuilder res = new StringBuilder();
+			while(c<=32)c=nextChar();
+			while(c>32) {
+				res.append(c);
+				c=nextChar();
+			}
+			return res.toString();
+		}
+ 
+		public String nextLine() {
+			StringBuilder res = new StringBuilder();
+			while(c<=32)c=nextChar();
+			while(c!='\n') {
+				res.append(c);
+				c=nextChar();
+			}
+			return res.toString();
+		}
+ 
+		public boolean hasNext() {
+			if(c>32)return true;
+			while(true) {
+				c=nextChar();
+				if(c==NC)return false;
+				else if(c>32)return true;
+			}
+		}
+	}
+
+}
