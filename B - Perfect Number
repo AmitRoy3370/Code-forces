@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class PerfectNumber {
+    public static void main(String[] args) {
+        long n = new Scanner(System.in).nextLong();
+        int count = 1;
+        int result = 0;
+        for (int i=19; count<=n; i+=9) {
+            if (sumOfDigits(i) == 10) {
+                count ++;
+                result = i;
+            }
+        }
+        System.out.println(result);
+    }
+
+    public static long sumOfDigits(long num){
+        long result = 0;
+        while (num != 0){
+            result = result + (num % 10);
+            num = num / 10;
+        }
+        return result;
+    }
+}
