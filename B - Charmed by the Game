@@ -1,0 +1,74 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.StringTokenizer;
+import java.util.TreeSet;
+
+public class pre76 {
+    static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+
+        public FastReader()
+        {
+            br = new BufferedReader(
+                    new InputStreamReader(System.in));
+        }
+
+        String next()
+        {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+
+        int nextInt() { return Integer.parseInt(next()); }
+
+        long nextLong() { return Long.parseLong(next()); }
+
+        double nextDouble()
+        {
+            return Double.parseDouble(next());
+        }
+
+        String nextLine()
+        {
+            String str = "";
+            try {
+                str = br.readLine();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+    public static void main(String args[]){
+        FastReader obj = new FastReader();
+         int tc = obj.nextInt();
+         while(tc--!=0){
+             int a = obj.nextInt(),b = obj.nextInt();
+             int total = a+b,case1 = total/2,case2 = total-case1;
+             TreeSet<Integer> set = new TreeSet<>();
+             for(int i=0;i<=Math.min(a,case1);i++) if(a-i<=case2) set.add(a-i+case1-i);
+             for(int i=0;i<=Math.min(a,case2);i++) if(a-i<=case1) set.add(a-i+case2-i);
+             for(int i=0;i<=Math.min(b,case1);i++) if(b-i<=case2) set.add(b-i+case1-i);
+             for(int i=0;i<=Math.min(b,case2);i++) if(b-i<=case1) set.add(b-i+case2-i);
+
+             System.out.println(set.size());
+             for (Iterator<Integer> it = set.iterator(); it.hasNext(); ) {
+                 Integer i = it.next();
+                 System.out.print(i+" ");
+             }
+             System.out.println();
+         }
+    }
+}
