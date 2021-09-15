@@ -1,0 +1,48 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String args[]) {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int m = s.nextInt();
+        int k = s.nextInt();
+        char arr[][] = new char[n][m];
+        for(int i = 0; i < n; i++){
+            String str = s.next();
+            for(int j = 0; j < m; j++){
+                arr[i][j] = str.charAt(j);
+            }
+        }
+        int count = 0,ans = 0;
+        for(int i = 0; i < n; i++){
+            count = 0;
+            for(int j = 0; j < m; j++){
+                if(arr[i][j] == '.'){
+                    count++;
+                }
+                else{
+                    ans += Math.max(0,count - k + 1);
+                    count = 0;
+                }
+            }
+            ans += Math.max(0,count - k + 1);
+        }
+        for(int i = 0; i < m; i++){
+            count = 0;
+            for(int j = 0; j < n; j++){
+                if(arr[j][i] == '.'){
+                    count++;
+                }
+                else{
+                    ans += Math.max(0,count - k + 1);
+                    count = 0;
+                }
+            }
+            ans += Math.max(0,count - k + 1);
+        }
+        if(k == 1){
+            ans =ans/2;
+        }
+        System.out.println(ans);
+
+    }
+}
