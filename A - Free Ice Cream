@@ -1,0 +1,50 @@
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author ASUS
+ */
+public class FreeIceCream {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner scan = new Scanner(System.in);
+        long n = scan.nextInt();
+        long x = scan.nextInt();
+        long home =x;
+        long kids =0;
+        for (int i = 0; i <n; i++) {
+            String s=scan.next();
+            char  c[]=new char[s.length()];
+            for (int j = 0; j < s.length(); j++) {
+               
+                s.getChars(j, j+1, c, j);
+            }
+            long add =scan.nextInt();
+            
+            if(c[0]=='+'){
+              
+                home=home+add;
+            }
+            else if(c[0]=='-'){
+                if(add<=home){
+                   
+                    home=home-add;
+                }
+                else{
+                    kids++;
+                }
+               
+            }
+            
+            
+     
+        }
+             System.out.println(home+" "+kids);
+    }
+
+}
