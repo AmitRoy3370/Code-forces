@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Codeforces {
+    public static void main(String[] args) {
+        int t = 0;
+        Scanner sc = new Scanner(System.in);
+        t = sc.nextInt();
+        while(t-- > 0) {
+            long a = sc.nextLong();
+            long b = sc.nextLong();
+            int count = 0;
+            int pow = 0;
+            long temp = a;
+            if(a > b) {
+                a = b;
+                b = temp;
+            }
+            while (a < b) {
+                count++;
+                a = a * 2;
+            }
+            if(a != b) System.out.println(-1);
+            else {
+                int res = 0;
+                res = count / 3;
+                count %= 3;
+                res = res + count / 2;
+                count %= 2;
+                if(count != 0) res++;
+                System.out.println(res);
+            }
+        }
+    }
+}
