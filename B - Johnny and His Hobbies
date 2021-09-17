@@ -1,0 +1,43 @@
+
+import java.util.*;
+
+
+
+
+public class Main {
+    private static final Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        int total = sc.nextInt();
+        while (total-- > 0) {
+            int n = sc.nextInt();
+            sc.nextLine();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+            solution s = new solution();
+            System.out.println(s.JohnnyandHisHobbies(arr));
+        }
+    }
+}
+class solution {
+    public int JohnnyandHisHobbies(int[] a) {
+        int n = a.length;
+        Arrays.sort(a);
+        int[] b = new int[n];
+        boolean flag = false;
+        int i;
+        out : for (i = 1; i <= 1024; i++) {
+            for (int j = 0; j < n; j++) {
+                b[j] = a[j] ^ i;
+            }
+            Arrays.sort(b);
+            for (int j = 0; j < n; j++) {
+                if (b[j] != a[j]) {
+                    continue out;
+                }
+            }
+            flag = true;
+            break;
+        }
+        return flag ? i : -1;
+    }
+}
