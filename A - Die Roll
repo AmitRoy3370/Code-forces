@@ -1,0 +1,43 @@
+import java.util.*;
+import java.io.*;
+public class Problem9A{
+   public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int y = sc.nextInt();
+        int w = sc.nextInt();
+        int possible_number_of_outcome = 0;
+        if(y==w){
+                         possible_number_of_outcome = (6-y) + 1;
+                         
+        }
+        else{
+                        possible_number_of_outcome = (6-(int)Math.max(y, w)) + 1;
+        }
+        int prob = possible_number_of_outcome/6;
+        if(prob==1){
+                        System.out.print("1/1"); 
+        }
+        else{
+                         if(possible_number_of_outcome==0){
+                                   System.out.print("0/1");          
+                         }
+                         else{
+                                int num = 0;
+                                int deno = 0;
+                                if(possible_number_of_outcome % 2==0){
+                                        num = possible_number_of_outcome/2;        
+                                        deno = 6/2;
+                                }
+                                else if(possible_number_of_outcome % 3==0){
+                                        num = possible_number_of_outcome/3;        
+                                        deno = 6/3;
+                                }
+                                else{
+                                        num = possible_number_of_outcome;
+                                        deno = 6;         
+                                }
+                                System.out.print(num+"/"+deno);
+                         }
+        }
+    }
+}
