@@ -1,0 +1,70 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
+
+public class A {
+	static int m;
+	static int p;
+	public static void main(String[] args) {
+		FastScanner fs=new FastScanner();
+		long t=fs.nextLong();
+		while(t-->0)
+		{
+			int n = fs.nextInt();
+			m = n;
+			p = m;
+			so("", 0, 0, n);
+		}
+	}
+	
+	public static void so(String a, int i, int j, int n)
+	{
+		if (m <= 0)
+			return;
+		if (i == p && i == j)
+		{
+			System.out.println(a); 
+			m--;
+			return;
+		}
+		if (n>0)
+		{
+			so(a+"(", i+1, j, n-1);
+		}
+		if (j<i)
+		{
+			so(a+")", i, j+1, n);
+		}
+	}
+ 
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		String next() {
+			while (!st.hasMoreTokens())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+ 
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++)
+				a[i]=nextInt();
+			return a;
+		}
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+	}
+ 
+}
