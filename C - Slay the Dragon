@@ -1,0 +1,58 @@
+import java.util.*;
+import java.io.*;
+import java.lang.Math.*;
+
+import static java.lang.Math.*;
+
+public class Main {
+
+	static Scanner scn = new Scanner(System.in);
+	static StringBuilder sb = new StringBuilder();
+	static PrintWriter out = new PrintWriter(System.out);
+	
+	public static void main(String[] HastaLaVistaLa) {
+		int t = 1;
+		for(int tests = 0; tests < t; tests++) solve();
+		out.println(sb);
+		out.close();
+	}
+
+	static long inf = Long.MAX_VALUE;
+	public static void solve() {
+		int n = scn.nextInt();
+		long[] a = new long[n];
+		for(int i = 0; i < n; i++) a[i] = scn.nextLong();
+		long sum = 0;
+		for(long i : a) sum += i;
+		int m = scn.nextInt();
+		long x, y, answer, res; int min, max, mid;
+		sort(a);
+		for(int k = 0; k < m; k++) {
+			x = scn.nextLong(); y = scn.nextLong(); min = 0; max = n; mid = 0;
+			while(min < max) {
+				mid = min + (max - min) / 2;
+				if(a[mid] < x) min = mid + 1;
+				else max = mid;
+			}
+			answer = inf;
+			for(int i = -2; i < 2; i++) {
+				int idx = i + mid;
+				res = 0;
+				if(idx >= 0 && idx < n) {
+					if(a[idx] < x) res = x - a[idx];
+					else res = 0;
+					if(sum - a[idx] < y) res += (y - (sum - a[idx]));
+					if(res < answer) answer = res;
+				}
+			}
+			sb.append(answer + "\n");
+		}
+	}
+	public static void sort(long[] a) {
+		int n = a.length;
+		List<Long> l = new ArrayList<>();
+		for(long i : a) l.add(i);
+		Collections.sort(l);
+		for(int i = 0; i < n; i++) a[i] = l.get(i);
+	}
+}
