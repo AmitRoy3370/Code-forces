@@ -1,0 +1,85 @@
+import java.util.*;
+import java.io.*;
+
+public class B_Combinatorics_Homework{
+    public static void main(String[] args) {
+        FastScanner s= new FastScanner();
+        StringBuilder res = new StringBuilder();
+        int t=s.nextInt();
+        int p=0;
+        while(p<t){
+        int a=s.nextInt();
+        int b=s.nextInt();
+        int c=s.nextInt();
+        int m=s.nextInt();
+        int  left=m;
+
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(a);
+        list.add(b);
+        list.add(c);
+        Collections.sort(list,Collections.reverseOrder());
+        int a1=list.get(0);
+        int a2=list.get(1);
+        int a3=list.get(2);
+        if((a1+a2+a3-3)>=m && (m>=(a1-a2-a3-1))){
+            res.append("YES\n");
+        }
+        else{
+            res.append("NO\n");
+        }
+        p++;
+      
+    }
+    System.out.println(res);
+
+
+        
+
+    }
+    static class FastScanner {
+		BufferedReader br;
+		StringTokenizer st;
+ 
+		public FastScanner(String s) {
+			try {
+				br = new BufferedReader(new FileReader(s));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+ 
+		public FastScanner() {
+			br = new BufferedReader(new InputStreamReader(System.in));
+		}
+ 
+		String nextToken() {
+			while (st == null || !st.hasMoreElements()) {
+				try {
+					st = new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return st.nextToken();
+		}
+ 
+		int nextInt() {
+			return Integer.parseInt(nextToken());
+		}
+ 
+		long nextLong() {
+			return Long.parseLong(nextToken());
+		}
+ 
+		double nextDouble() {
+			return Double.parseDouble(nextToken());
+		}
+	}
+
+
+
+
+}
