@@ -1,0 +1,47 @@
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Book_Reading {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            long n, m;
+            n = sc.nextLong();
+            m = sc.nextLong();
+            if (n < m) {
+                System.out.println(0);
+                continue;
+            }
+            String s= String.valueOf(m);
+            long val= s.charAt(s.length()-1)-'0';
+            List<Long> l = new ArrayList<>();
+            l.add(val);
+            long i=1;
+            while (true) {
+                long mVal=l.get((int) (i-1))+val;
+                String pers= String.valueOf(mVal);
+                long last=pers.charAt(pers.length()-1)-'0';
+                if (l.contains(last)){
+                    break;
+                }else {
+                    l.add(last);
+                }
+                i++;
+            }
+            long cons=0;
+            for (long p=0;p<l.size();p++){
+                cons+=l.get((int) p);
+            }
+            long div=n/m;
+            long sum=0;
+            for (long idx=0;idx<div%l.size();idx++){
+                sum+=l.get((int) idx);
+            }
+            sum+=(div/l.size())*cons;
+            System.out.println(sum);
+        }
+    }
+}
