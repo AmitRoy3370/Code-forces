@@ -1,0 +1,30 @@
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Solution3 {
+	public static void main(String[] args) throws Exception {
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int bx = in.nextInt();
+		long X = 0;
+		for(int i = 0; i < n; i++) {
+			X *= bx;
+			X += in.nextInt();
+		}
+		int m = in.nextInt();
+		int by = in.nextInt();
+		long Y = 0;
+		for(int i = 0; i < m; i++) {
+			Y *= by;
+			Y += in.nextInt();
+		}
+		if(X == Y) {
+			System.out.println("=");
+		} else if(X < Y) {
+			System.out.println("<");
+		} else {
+			System.out.println(">");
+		}
+	}
+}
