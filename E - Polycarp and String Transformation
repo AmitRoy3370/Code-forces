@@ -1,0 +1,158 @@
+import java.io.*;
+import java.util.*;
+public class Main {
+    public static void main(String args[])
+    {
+        FastReader input=new FastReader();
+        PrintWriter out=new PrintWriter(System.out);
+        int T=input.nextInt();
+        while(T-->0)
+        {
+            String s=input.next();
+            HashSet<Character> set=new HashSet<>();
+            HashSet<Character> temp=new HashSet<>();
+            int x=1;
+            int flag=0;
+            String str="";
+            int a[]=new int[26];
+            for(int i=s.length()-1;i>=0;i--)
+            {
+                a[s.charAt(i)-'a']++;
+                temp.add(s.charAt(i));
+                if(temp.size()==x)
+                {
+                    int count=0;
+                    char c=' ';
+                    for(char ch:temp)
+                    {
+                        if(!set.contains(ch))
+                        {
+                            count++;
+                            c=ch;
+                        }
+                    }
+                    if(count!=1)
+                    {
+                        flag=1;
+                        break;
+                    }
+                    else
+                    {
+                        str+=c;
+                        set.add(c);
+                        temp=new HashSet<>();
+                        x++;
+                    }
+                }
+            }
+            if(flag==1)
+            {
+                out.println(-1);
+            }
+            else
+            {
+                ArrayList<Integer> list=new ArrayList<>();
+                String st="";
+                for(int i=str.length()-1;i>=0;i--)
+                {
+                    int v=str.charAt(i)-'a';
+                    list.add(v);
+                    st+=str.charAt(i);
+                }
+                int len=0;
+                for(int i=0;i<list.size();i++)
+                {
+                    int q=(i+1);
+                    int v=a[list.get(i)];
+                    if(v%q!=0)
+                    {
+                        flag=1;
+                        break;
+                    }
+                    len+=v/q;
+                }
+                if(flag==1)
+                {
+                    out.println(-1);
+                }
+                else
+                {
+                    StringBuilder sb=new StringBuilder(s.substring(0,len));
+                    StringBuilder pre=new StringBuilder(s.substring(0,len));
+                    for(int i=0;i<list.size();i++)
+                    {
+                        char ch=(char)(list.get(i)+'a');
+                        StringBuilder t=new StringBuilder("");
+                        for(int j=0;j<pre.length();j++)
+                        {
+                            if(pre.charAt(j)!=ch)
+                            {
+                                t.append(pre.charAt(j));
+                            }
+                        }
+                        sb.append(t);
+                        pre=t;
+                    }
+                    if(sb.toString().equals(s))
+                    {
+                        out.println(s.substring(0,len)+" "+st);
+                    }
+                    else
+                    {
+                        out.println(-1);
+                    }
+                }
+            }
+        }
+        out.close();
+    }
+    static class FastReader
+    {
+        BufferedReader br;
+        StringTokenizer st;
+        public FastReader()
+        {
+            br = new BufferedReader(new InputStreamReader(System.in));
+        }
+        String next()
+        {
+            while (st == null || !st.hasMoreElements())
+            {
+                try
+                {
+                    st = new StringTokenizer(br.readLine());
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+        int nextInt()
+        {
+            return Integer.parseInt(next());
+        }
+        long nextLong()
+        {
+            return Long.parseLong(next());
+        }
+        double nextDouble()
+        {
+            return Double.parseDouble(next());
+        }
+        String nextLine()
+        {
+            String str="";
+            try
+            {
+                str=br.readLine();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+}
