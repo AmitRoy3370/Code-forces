@@ -1,0 +1,178 @@
+
+import java.math.*;
+import java.util.* ;
+import java.io.* ;
+@SuppressWarnings("unused")
+
+//Scanner s = new Scanner(new File("input.txt"));
+//s.close();
+//PrintWriter writer = new PrintWriter("output.txt");
+//writer.close();
+
+
+public class cf
+{	
+
+	static final int mod = (int)1e9+7 ;
+	static final double pi = 3.1415926536 ;
+	static boolean not_prime[] = new boolean[1000001] ;
+	static void sieve() {
+		for(int i=2 ; i*i<1000001 ; i++) {
+			if(not_prime[i]==false) {
+				for(int j=2*i ; j<1000001 ; j+=i) {
+					not_prime[j]=true ;
+				}
+			}
+		}not_prime[0]=true ; not_prime[1]=true ;
+	}	
+	
+	public static long bexp(long base , long power)
+	{
+		long res=1L ;
+		
+		base = base%mod ;
+		
+		while(power>0) {
+			if((power&1)==1) {
+				res=(res*base)%mod ;
+				power-- ;
+			}
+			else {
+				base=(base*base)%mod ;
+				power>>=1 ;
+			}
+		}
+		
+		return res ;
+	}
+
+	static long modInverse(long n, long p){return power(n, p - 2, p); }
+	static long power(long x, long y, long p)
+	{
+	  
+	    // Initialize result
+	    long res = 1;
+	    x = x % p;
+	  
+	    while (y > 0) {
+	  
+	        if (y % 2 == 1)
+	            res = (res * x) % p;
+	        
+	        x = (x * x) % p;
+	    }
+	  
+	    return res;
+	}
+	static long nCrModPFermat(int n, int r, long p){if(n<r) return 0 ;if (r == 0)return 1; long[] fac = new long[n + 1];fac[0] = 1;for (int i = 1; i <= n; i++)fac[i] = fac[i - 1] * i % p;return (fac[n] * modInverse(fac[r], p) % p* modInverse(fac[n - r], p) % p) % p;}
+	
+	static long modular_add(long a, long b){ return ((a % mod) + (b % mod)) % mod; }
+	static long modular_sub(long a, long b){ return ((a % mod) - (b % mod) + mod) % mod; }
+	static long modular_mult(long a, long b){ return ((a % mod) * (b % mod)) % mod; }
+	
+	static long lcm(int a, int b){ return (a / gcd(a, b)) * b; }
+	static long gcd(long a, long b){if (b == 0) {return a;}return gcd(b, a % b);}
+	
+
+	/*
+	 * 
+	 * SEND HELP
+	 * 
+	 */
+	
+
+	static int min=Integer.MAX_VALUE ;
+	public static void main(String[] args)throws IOException//throws FileNotFoundException
+    {
+		FastReader in = new FastReader() ;
+		StringBuilder op = new StringBuilder();
+		List<Long> pow = new ArrayList<>() ;
+		for(long i=1 ; i<Math.pow(10, 17);  i*=2) {
+			pow.add(i) ;
+		}
+		int T = in.nextInt() ;
+//		int T=1 ;
+		for(int tt=0 ; tt<T ; tt++)
+		{
+			min=Integer.MAX_VALUE ;
+			int n = in.nextInt() ;
+			
+			for(int i=0 ; i<pow.size() ; i++) {
+				process(n,pow.get(i)) ;
+			}
+			op.append(min+"\n") ;
+		}
+		System.out.println(op.toString());
+    }
+	public static void process(int n , long pow) {
+		int p1=0 , p2=0 ;
+		int taken=0 ;
+		String N = Integer.toString(n) ;
+		String P = Long.toString(pow) ;
+		while(p1<N.length() && p2<P.length()) {
+			if(N.charAt(p1++)==P.charAt(p2)) {
+				taken++ ;
+				p2++ ;
+			}
+		}
+		int del = N.length()-taken ;
+		int append = P.length()-taken ;
+		min=Math.min(min, append+del) ;
+ 	}
+	
+	static void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+ 
+        public FastReader()
+        {
+            br = new BufferedReader(
+                new InputStreamReader(System.in));
+        }
+ 
+        String next()
+        {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+ 
+        int nextInt() { return Integer.parseInt(next()); }
+ 
+        long nextLong() { return Long.parseLong(next()); }
+ 
+        double nextDouble(){ return Double.parseDouble(next()); };
+ 
+        String nextLine()
+        {
+            String str = "";
+            try {
+                str = br.readLine();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+        
+        int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+    }
+
+}
