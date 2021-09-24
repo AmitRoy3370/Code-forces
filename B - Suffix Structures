@@ -1,0 +1,51 @@
+/*
+ * Exercise from here: http://ahmed-aly.com/Standings.jsp?ID=13899 
+ * Codeforces: http://www.codeforces.com/problemset/problem/448/B
+ */
+
+import java.util.Scanner;
+
+public class P2 {
+	
+	static Scanner sc = new Scanner(System.in);
+	static String f;
+	static String s;
+	static String[] out = new String[]{"need tree", "array","automaton","both"};
+	static int i = 0, j = -1;
+	static String temp;
+	
+	public static void main(String[] args) {
+		f = sc.nextLine();
+		s = sc.nextLine();
+		
+		i += 2;
+		for (int k = 0; k < s.length(); k++) {
+			j++;
+			while (j < f.length()) {
+				if (f.charAt(j) == s.charAt(k)) {
+					break;
+				}
+				j++;
+			}
+		}
+		if (j >= f.length()) {
+			i -= 2;
+		}		
+		
+		if (i == 0) {
+			i += 1;
+			for (int k = 0; k < s.length(); k++) {
+				temp = ""+s.charAt(k);
+				if (f.length() - f.replaceAll(temp, "").length() < s.length() - s.replaceAll(temp, "").length() || f.contains(s)) {
+					i -= 1;
+					break;
+				}
+			}
+			if (i == 1 && f.length() != s.length()) {
+				i = 3;
+			}
+		}
+		
+		System.out.println(out[i]);
+	}
+}
