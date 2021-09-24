@@ -1,0 +1,63 @@
+import java.util.*;
+public class MyClass {
+  
+
+public static void main(String[] args){
+    Scanner in=new Scanner(System.in);
+    int n=in.nextInt();
+	int jars[]=new int[n];
+	for(int i=0;i<n;i++){
+	    jars[i]=in.nextInt();
+	}
+
+	//find the minimum
+	int min=jars[0];
+	for(int content:jars){
+		if(content<min)		
+			min=content;
+	}
+	
+		
+	
+	int maxDistFromMin=0;
+	int index=0;
+	//Stores distance to the next min 
+	int[] memo=new int[n+1];
+	for(int i=0;i<n+1;i++)
+	    memo[i]=-1;
+	for(int i=jars.length-1;i>=0;i--){
+		if(jars[i]==min){
+			memo[i]=0;
+		}
+		else if(memo[i+1]==-1){ //memo is empty
+		
+			int circular=0;
+			int distance=0;
+
+			for(int j=i+1;true;j++){
+				distance++;
+				circular=j%n;		
+				if(jars[circular]==min)
+					break;
+			}
+			memo[i]=distance;
+			
+		}else{
+			memo[i]=(memo[i+1])+1;
+		}
+		
+		if (memo[i]>maxDistFromMin){
+			maxDistFromMin=memo[i];
+		}
+		
+	}
+
+
+	long result=( (long)min*(long)n)+( (long) maxDistFromMin);
+    System.out.println(result);
+	
+}
+
+
+
+}
