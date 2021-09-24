@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+
+		int a1 = scan.nextInt();
+		int a2 = scan.nextInt();
+		int a3 = scan.nextInt();
+		int cups = a1 + a2 + a3;
+		int b1 = scan.nextInt();
+		int b2 = scan.nextInt();
+		int b3 = scan.nextInt();
+		int n = scan.nextInt();
+		int medals = b1 + b2 + b3;
+		int total = (int) Math.ceil(cups / 5.0)
+				+ (int) Math.ceil(medals / 10.0);
+		if (total <= n)
+			System.out.println("YES");
+		else
+			System.out.println("NO");
+		scan.close();
+	}
+
+}
