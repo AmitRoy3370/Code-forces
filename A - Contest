@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class Contest {
+
+    public static void main(String[] args) {
+
+        Scanner scn = new Scanner(System.in);
+
+        int a = scn.nextInt();
+        int b = scn.nextInt();
+        int c = scn.nextInt();
+        int d = scn.nextInt();
+
+        int mishaScore = Math.max(((3 * a) / 10), (a - ((a / 250) * c)));
+        int vasyaScore = Math.max(((3 * b) / 10), (b - ((b / 250) * d)));
+
+        if (mishaScore > vasyaScore) {
+            System.out.println("Misha");
+        } else if (mishaScore < vasyaScore) {
+            System.out.println("Vasya");
+        } else {
+            System.out.println("Tie");
+        }
+
+
+    }
+}
