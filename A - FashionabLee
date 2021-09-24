@@ -1,0 +1,24 @@
+/*   Created by IntelliJ IDEA.
+ *   Author: Hritik Ranjan (191500352)
+ *   Date: 17-09-2021
+ *   Time: 18:43
+ *   File: Fashionablee.java
+ */
+
+import java.util.Scanner;
+
+public class Fashionablee {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        long t = in.nextLong();
+        while(t-->0){
+            long n = in.nextLong();
+            if(n%4==0){
+                System.out.println("YES");
+            }
+            else{
+                System.out.println("NO");
+            }
+        }
+    }
+}
