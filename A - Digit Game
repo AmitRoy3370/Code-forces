@@ -1,0 +1,74 @@
+import java.util.*;
+public class t{
+	
+	
+	public static int winner(char[] s,int c) {
+		//even
+		if(c==1) {
+			for(int i=1;i<s.length;i+=2) {
+				if(s[i]%2==0) {return 2;}
+				
+				
+			}
+			
+			
+			return 1;
+			
+			
+		}
+		//odd
+		else {
+			
+			for(int i=0;i<s.length;i+=2) {
+				if(s[i]%2!=0) {return 1;}
+			
+			}
+			
+			
+			return 2;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+        int n=sc.nextInt();
+        sc.nextLine();
+        String s=sc.nextLine();
+        
+        char[] a=s.toCharArray();
+        
+        
+       if(n%2==0) {
+    	   System.out.println(winner(a,1));
+       }
+       else {
+    	   System.out.println(winner(a, 0));
+       }
+                        
+                        
+        }
+               
+               
+               
+               
+               
+               
+}                
+               
+               
+               
+               
+               
+               
+               
+}
