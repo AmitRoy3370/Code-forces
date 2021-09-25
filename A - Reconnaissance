@@ -1,0 +1,29 @@
+import java.util.*;
+import java.lang.*;
+
+public class Code {
+	public static void main(String[] args) {
+		Scanner cin = new Scanner(System.in);
+		int numSoldiers = cin.nextInt();
+		int hDiff = cin.nextInt();
+
+		int[] arr = new  int[numSoldiers];
+
+		for(int i = 0 ; i<numSoldiers; i++) {
+			arr[i] = cin.nextInt();
+		}
+		Arrays.sort(arr);
+		int count = 0;
+		for(int i = 0 ; i < numSoldiers ; i++) {
+			for(int j = 0; j< numSoldiers ; j++) {
+				int diff = Math.abs(arr[j] - arr[i]);
+				if(i==j)
+				continue;
+				else if(diff<=hDiff && diff >= 0)
+				count++;
+			}
+		}
+
+		System.out.println(count);		
+	}
+}
