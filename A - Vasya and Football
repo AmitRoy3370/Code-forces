@@ -1,0 +1,39 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    void run() {
+        Scanner sc = new Scanner(System.in);
+        int [] num = new int[200];
+        String h, a;
+        h = sc.next(); a = sc.next();
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            int t = sc.nextInt();
+            String s = sc.next();
+            int number = sc.nextInt();
+            String c = sc.next();
+
+            if(c.equals("r")) {
+                num[(s.equals("h") ? 100+number : number)]++;
+            }
+            if(num[(s.equals("h") ? 100+number : number)] >= 1) {
+                System.out.println((s.equals("h") ? h : a) + " " + number +" " + t);
+                num[(s.equals("h") ? 100+number : number)] = -Integer.MAX_VALUE;
+                continue;
+            }
+            if(num[(s.equals("h") ? 100+number : number)] == 0) {
+                num[(s.equals("h") ? 100+number : number)]++;
+            }
+        }
+
+    }
+
+    void debug(Object... o) {
+        System.out.println(Arrays.deepToString(o));
+    }
+
+    public static void main(String[] args) {
+        new Main().run();
+    }
+}
