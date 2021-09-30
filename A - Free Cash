@@ -1,0 +1,25 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+ 
+/* Name of the class has to be "Main" only if the class is public. */
+public final class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner s = new Scanner(System.in);
+		int n= s.nextInt();
+    int arr[][]= new int[n][2];
+    int time[]= new int[24*60];
+    for(int i=0;i<n;i++){
+      arr[i][0]=s.nextInt();
+      arr[i][1]=s.nextInt();
+      time[(arr[i][0]*60)+arr[i][1]]++;
+    }
+    int count=0;
+    for(int i=0;i<24*60;i++){
+      count=Math.max(time[i],count);
+    }
+    System.out.println(count);
+	}
+}
