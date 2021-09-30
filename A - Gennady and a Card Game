@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class GennadyandaCardGame {
+
+	public static void main(String[] args) {
+
+		Scanner scanner = new Scanner(System.in);
+		String card_on_table =  scanner.nextLine();
+		
+		String[] hand = new String[5];
+		
+		for(int i = 0 ; i < hand.length ; i++)
+			hand[i] = scanner.next();	scanner.close();
+		
+		for(int i = 0 ; i < hand.length ; i++)
+			if(card_on_table.charAt(0)==hand[i].charAt(0) || card_on_table.charAt(1)==hand[i].charAt(1)) {System.out.println("YES");return;}
+			else continue;
+	System.out.println("NO");
+	
+	}
+
+}
