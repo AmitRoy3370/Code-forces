@@ -1,0 +1,108 @@
+import java.util.Scanner;
+import java.util.Map;
+import java.util.HashMap;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int n;
+    
+    static long dp[][];
+    
+    public static void main(String amit[]) {
+     
+     n=in.nextInt();
+     
+     dp=new long[n+1][8];
+     
+     for(int i=0;i<=n;i++){
+         
+         for(int j=0;j<8;j++){
+             
+             dp[i][j]=Integer.MAX_VALUE;
+             
+            // dp[i][j]=(int)1e17;
+             
+         }
+         
+     }
+     
+     dp[0][0]=0;
+     
+     Map<Integer,Character> map=new HashMap<>();
+     
+     map.put(0,'C');
+     map.put(1,'B');
+     map.put(2,'A');
+     
+     for(int i=0;i<n;i++){
+         
+         long cost=in.nextLong();
+         
+         char a[]=in.next().toCharArray();
+         
+         int string_mask=0;
+         
+         for(int j=0;j<3;j++){
+             
+             int have=0;
+             
+             char present=map.get(j);
+             
+             for(char c: a){
+                 
+                 if(present==c ){
+                     
+                     have=1;
+                     
+                 }
+                 
+             }
+             
+             if( have>=1 ){
+             
+             string_mask+=(1 << j);
+             
+             }
+        
+         }
+         
+   //     System.out.println("string_mask: "+string_mask);
+         
+        	for (int mask = 0; mask < 8; mask++) {
+        	    
+			dp[i + 1][mask] = Math.min(dp[i + 1][mask], dp[i][mask]);
+			dp[i + 1][mask | string_mask] = Math.min(dp[i + 1][mask | string_mask], dp[i][mask] + cost);
+		
+        	    
+        	}
+         
+     }
+     
+     /*for(int i=0;i<=n;i++){
+         
+         for(int j=0;j<8;j++){
+             
+             System.out.print(dp[i][j]+"  ");
+             
+         }
+         
+         System.out.println();
+         
+     }*/
+     
+     long ans=dp[n][7];
+     
+     if( ans==Integer.MAX_VALUE ){
+         
+         System.out.println(-1);
+         
+     }else{
+         
+         System.out.println(ans);
+         
+     }
+     
+    }
+}
