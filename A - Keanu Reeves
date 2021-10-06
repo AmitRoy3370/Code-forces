@@ -1,0 +1,35 @@
+//package test;
+
+import java.util.Scanner;
+
+public class starter {
+		public static void main ( String args[] )
+		{
+			Scanner conio = new Scanner ( System.in ) ;
+			
+			int size = conio.nextInt() , number_1 = 0 ; 
+			conio.nextLine() ; 
+			String line = conio.nextLine() ; 
+			
+			for ( int i = 0 ; i < size ; ++i )
+				if ( line.charAt(i) == '1' )
+					++number_1 ; 
+			
+			if ( 2*number_1 == size ) // equal number of 1s and 0s
+			{
+				System.out.println(2);
+				System.out.println( line.charAt(0) + " " + line.substring(1) ) ; 				
+			}
+			else
+			{
+				System.out.println(1);
+				System.out.println(line);
+			}
+			
+			conio.close();  
+		}
+	
+
+}
+
+
