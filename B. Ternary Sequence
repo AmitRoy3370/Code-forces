@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int x1,x2,y1,y2,z1,z2,testCases;
+    
+    static void solve(){
+        
+        	int sum = 0;
+	int p = Math.min(z1, y2);
+	z1 -= p;
+	y2 -= p;
+	sum += 2 * p;
+ 
+	p = Math.min(x1, z2);
+	x1 -= p;
+	z2 -= p;
+ 
+	p = Math.min(y1, x2);
+	y1 -= p;
+	x2 -= p;
+ 
+	sum -= 2 * Math.min(y1, z2);
+        
+        System.out.println(sum);
+        
+    }
+    
+    public static void main(String args[]) {
+      
+      testCases=in.nextInt();
+      
+      for(int i=0;i<testCases;i++){
+          
+          x1=in.nextInt();
+          y1=in.nextInt();
+          z1=in.nextInt();
+          
+          x2=in.nextInt();
+          y2=in.nextInt();
+          z2=in.nextInt();
+          
+          solve();
+          
+      }
+      
+    }
+}
