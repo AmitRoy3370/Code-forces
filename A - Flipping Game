@@ -1,0 +1,37 @@
+import java.util.*;
+public class dbg
+{
+    public static void main(String args[])
+    {
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt();
+        int a[]=new int[n];
+        int c=0;
+        int max=0,o=0,oo=0;
+        for(int i=0;i<n;i++)
+        {
+            a[i]=in.nextInt();
+            if(a[i]==1)
+            oo++;
+        }
+        int l=0,z=0,f=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<=i;j++)
+            {
+                l=i-j;o=0;z=0;
+                for(int k=j;k<=i;k++)
+                {
+                    if(a[k]==1)
+                    o++;
+                    else
+                    z++;
+                }
+                f=z-o+oo;
+                if(max<f)
+                max=f;
+            }
+        }
+        System.out.println(max);
+    }
+}
