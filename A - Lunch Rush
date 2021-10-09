@@ -1,0 +1,26 @@
+import java.util.*;
+import java.io.*;
+import static java.lang.Math.*;
+
+public class Main {
+
+	static Scanner scn = new Scanner(System.in);
+	static StringBuilder sb = new StringBuilder();
+	static PrintWriter out = new PrintWriter(System.out);
+
+	public static void main(String[] HastaLaVistaLa) {
+		int t = 1;
+		for(int tests = 0; tests < t; tests++) solve();
+		out.println(sb);
+		out.close();
+	}
+	public static void solve() {
+		int n = scn.nextInt(), k = scn.nextInt(), f, t;
+		int res = Integer.MIN_VALUE;
+		for(int i = 0; i < n; i++) {
+			f = scn.nextInt(); t = scn.nextInt();
+			res = max(res, (t <= k) ? (f) : (f - (t - k)));
+		}
+		sb.append(res);
+	}
+}
