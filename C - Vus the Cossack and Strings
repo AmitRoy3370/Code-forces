@@ -1,0 +1,47 @@
+import java.util.*;
+import java.io.*;
+ 
+public class Solution{
+	static PrintWriter out=new PrintWriter(System.out);
+	public static void main (String[] args) throws IOException{
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		
+		String[] input=br.readLine().trim().split(" ");
+		
+		String a = input[0];
+		String b = br.readLine();
+		out.println(getCount(a, b));
+		
+		out.flush();
+		out.close();
+	}
+	public static int getCount(String a, String b){
+	    int n = a.length();
+	    int m = b.length();
+	    int count1B = 0;
+	    int[] prefixSum = new int[n];
+	    if(a.charAt(0) == '1'){
+	        prefixSum[0] = 1;
+	    }
+	    for(int i = 1; i < n; i++){
+	        prefixSum[i] = prefixSum[i - 1];
+	        if(a.charAt(i) == '1'){
+	            prefixSum[i]++;
+	        }
+	    }
+	    for(int  i = 0; i < m; i++){
+	        if(b.charAt(i) == '1'){
+	            count1B++;
+	        }
+	    }
+	    int ans = 0;
+	    for(int i = m - 1; i < n; i++){
+	        int count1A = (i - m >= 0) ? (prefixSum[i] - prefixSum[i - m]) : prefixSum[i];
+	        if((count1A - count1B) % 2 == 0)
+	        {
+	            ans++;
+	        }
+	    }
+	    return ans;
+	}
+}
