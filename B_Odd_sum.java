@@ -4,11 +4,73 @@ public class B_Odd_sum{
 	
 	static Scanner in=new Scanner(System.in);
 	
+	static int n;
+	
+	static int a[];
+	
+    static void solve(){
+		
+		long dp[][]=new long[n][2];
+		
+		//0 for the even
+		//1 for the odd
+
+    /*for(int i=0;i<n;i++){
+	
+	    if( a[i]%2==0 ){
+			
+			dp[i][0]=a[i];
+			
+		}else{
+			
+			dp[i][1]=a[i];
+			
+		}
+	
+    }*/
+	
+	for(int i=0;i<n;i++){
+		
+		dp[i][0]=Integer.MIN_VALUE;
+		dp[i][1]=Integer.MIN_VALUE;
+		
+	}
+	
+	if( a[0]%2!=0 ){
+		
+		dp[0][1]=a[0];
+		
+	}else{
+		
+		dp[0][0]=a[0];
+		
+	}
+	
+		for(int i=1;i<n;i++){
+			
+        if(a[i]%2!=0){
+        
+		  dp[i][1]=Math.max(Math.max(dp[i-1][1],dp[i-1][0]+a[i]),a[i]);
+          dp[i][0]=Math.max(dp[i-1][0],dp[i-1][1]+a[i]);
+
+        }else{
+        
+          dp[i][1]=Math.max(dp[i-1][1],dp[i-1][1]+a[i]);
+          dp[i][0]=Math.max(Math.max(dp[i-1][0],dp[i-1][0]+a[i]),a[i]);
+        
+		}
+			
+		}
+		
+		System.out.print( dp[n-1][1] );
+		
+	}
+	
 	public static void main(String [] amit){
 		
-		int n=in.nextInt();
+		 n=in.nextInt();
 		
-		int a[]=new int[n];
+		 a=new int[n];
 		
 		int evenSum=0,minPositiveOdd=Integer.MAX_VALUE;
 		int maxNegativeOdd=Integer.MIN_VALUE;
@@ -37,10 +99,12 @@ public class B_Odd_sum{
 			
 		}
 		
+		solve();
+		
 	//	System.out.println("maxNegativeOdd: "+maxNegativeOdd);
 		//System.out.println("minPositiveOdd: "+minPositiveOdd);
 		
-		if(evenSum%2==1){
+		/*if(evenSum%2==1){
 			
 			System.out.print(evenSum);
 			
@@ -60,7 +124,7 @@ public class B_Odd_sum{
 			
 			}
 			
-		}
+		}*/
 		
 	}
 	
