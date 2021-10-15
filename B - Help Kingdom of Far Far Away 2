@@ -1,0 +1,47 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+public class Main {
+	
+	private static BufferedReader in =  new BufferedReader( new InputStreamReader ( System.in ) );
+	
+	private static String input;
+	
+	public static void main(String[] args) throws IOException {
+		input = in.readLine();
+		boolean brackets = input.charAt(0) == '-';
+		StringBuilder ans = new StringBuilder(".");
+		int count = 0;
+		int last_int = -1;
+		boolean flag = false;
+		for(int i = 0 ; i < input.length() && count < 2 ; i ++) {
+			if ( input.charAt(i) == '.'  ) {
+				flag = true;
+				last_int = i-1;
+			}
+			if ( flag && input.charAt(i) != '.' ) {
+				ans.append(input.charAt(i));
+				count ++;
+			}
+		}
+		while(ans.length() < 3) ans.append('0');
+		if ( last_int == -1 ) last_int = input.length()-1;
+		for( int i = last_int , j = 1 ; i >= 0 && input.charAt(i) != '-' ; i -- , j ++ ) {
+			ans.insert(0, input.charAt(i));
+			if ( j % 3 == 0 && i != 0 ) {
+				ans.insert(0, ',');
+				j = 0;
+			}
+		}
+		if ( ans.charAt(0) == ',' ) ans.delete(0, 1);
+		ans.insert(0, '$');
+		if ( brackets ) {
+			ans.append(')');
+			ans.insert(0, '(');
+		}
+		System.out.println(ans.toString());
+	}
+
+}
