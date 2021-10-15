@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class A_Help_Vasilisa_the_Wise_2 {
+
+    static Scanner in=new Scanner(System.in);
+    
+    static int r1,r2,c1,c2,d1,d2;
+    
+    public static void main(String[] amit) {
+        
+        r1=in.nextInt();
+        r2=in.nextInt();
+        c1=in.nextInt();
+        c2=in.nextInt();
+        d1=in.nextInt();
+        d2=in.nextInt();
+        
+       int d=(r2+c2-d2)/2;
+       int a=d1-d;
+       int c=r2-d;
+       int b=d2-c;
+        
+       if( a<1 || a>9 || b<1 || b>9 || c<1 || c>9 || d<1 || d>9 || a==b||a==c||a==d||b==c||b==d||c==d||a+b!=r1||c+d!=r2||a+c!=c1||b+d!=c2||a+d!=d1||b+c!=d2  ){
+           
+           System.out.println(-1);
+           
+           return;
+           
+       }
+       
+        System.out.println( a+" "+b );
+        System.out.println(c+" "+d );
+        
+    }
+    
+}
+/*
+
+3 7
+4 6
+5 5
+
+
+*/
+
+/*
+
+11 10
+13 8
+5 16
+
+
+*/
+
+/*
+
+1 2
+3 4
+5 6
+
+
+*/
+
+/*
+
+10 10
+10 10
+10 10
+
+
+*/
