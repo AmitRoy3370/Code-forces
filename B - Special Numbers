@@ -1,0 +1,27 @@
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class main{
+    public static void main(String []args) throws IOException{
+        long m = 1000000007;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+        while (t-- > 0) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int n = Integer.parseInt(st.nextToken());
+            int k = Integer.parseInt(st.nextToken());
+            long p = 1;
+            long ans = 0;
+            for(int j=0;j<32;j++){
+                if( (k & 1<<j) != 0){
+                    ans = (ans + p) % m;
+                }
+                p = p*n;
+                p %= m;
+            }
+            System.out.println(ans);
+        }
+    }
+}
