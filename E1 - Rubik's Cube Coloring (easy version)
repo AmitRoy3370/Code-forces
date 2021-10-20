@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Contest_yandexA{
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		//int t = input.nextInt();
+		//for(int tt = 0;tt<t;tt++){
+			int n = input.nextInt()-1;
+			long ans = 6;
+			long p = 1000000007;
+			long pre = 16;
+			while(n--> 0){
+				ans*= pre;
+				pre*= pre;
+				ans%= p;
+				pre%= p;
+			}
+
+			System.out.println(ans);
+		//}
+	}
+
+
+	public static int gcd(int a,int b){
+		if(b == 0){
+			return a;
+		}
+		return gcd(b,a%b);
+	}
+}
+
