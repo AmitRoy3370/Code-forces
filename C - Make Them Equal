@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class Contest_yandexA{
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int t = input.nextInt();
+		for(int tt = 0;tt<t;tt++){
+			int n = input.nextInt();
+			String c = input.next();
+			String s = input.next();
+			int ans = 2;
+			String m = n + " " + (n-1);
+			for(int i = n-1;i>=n/2;i--){
+				if((s.charAt(i)+"").equals(c)){
+					ans = 1;
+					m = (i+1)+"";
+					break;
+				}
+			}
+			boolean bool = true;
+			for(int i = n-1;i>=0;i--){
+				if(!(s.charAt(i)+"").equals(c)){
+					bool = false;
+				}
+			}
+			if(bool){
+				System.out.println(0);
+			}
+			else{
+				System.out.println(ans);
+				System.out.println(m);
+			}
+		}
+	}
+
+
+	public static int gcd(int a,int b){
+		if(b == 0){
+			return a;
+		}
+		return gcd(b,a%b);
+	}
+}
+
