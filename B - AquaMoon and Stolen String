@@ -1,0 +1,107 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+ 
+public class Main{
+ 
+    static FastReader in;
+    static PrintWriter o;
+ 
+    public static void solve() {
+		int t = in.nextInt();
+		while (t-- > 0) {
+			int n = in.nextInt();
+			int m = in.nextInt();
+			String[] strs = new String[n];
+			for (int i = 0; i < n; i++) {
+				strs[i] = in.next();
+			}
+			int ans = -1;
+			int[] arr = new int[m];
+			for (int i = 0; i < n - 1; i++) {
+				String str = in.next();
+				for (int j = 0; j < m; j++) {
+					arr[j] = arr[j] ^ (str.charAt(j) - '0');
+				}
+			}
+			int[] arr1 = new int[m];
+			for (int i = 0; i < n; i++) {
+				String str = strs[i];
+				for (int j = 0; j < m; j++) {
+					arr1[j] = arr1[j] ^ (str.charAt(j) - '0');
+				}
+			}
+			for (int i = 0; i < n; i++) {
+				int[] arr2 = arr1.clone();
+				String str = strs[i];
+				for (int j = 0; j < m; j++) {
+					arr2[j] = arr2[j] ^ (str.charAt(j) - '0');
+				}
+				boolean b = true;
+				for (int j = 0; j < m; j++) {
+					if (arr2[j] != arr[j]) {
+						b = false;
+					}
+				}
+				if (b) {
+					ans = i;
+					break;
+				}
+			}
+			o.println(strs[ans]);
+		}
+		o.close();
+		return;
+    }
+ 
+    public static void main(String[] args) throws FileNotFoundException {
+        o = new PrintWriter(System.out);
+        in = new FastReader();
+        solve();
+        System.exit(0);
+    }
+ 
+    static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+ 
+        public FastReader() throws FileNotFoundException {
+            br = new BufferedReader(new InputStreamReader(System.in));
+        }
+ 
+        String next() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+ 
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+ 
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+ 
+        double nextDouble() {
+            return Double.parseDouble(next());
+        }
+ 
+        String nextLine() {
+            String str = "";
+            try {
+                str = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+}
