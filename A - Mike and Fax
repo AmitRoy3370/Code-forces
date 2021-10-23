@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class A548 {
+
+    public static void main(String args[]){
+
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int k = sc.nextInt();
+        int len = s.length();
+        int lenOfOneSeg = len/k;
+
+        if(lenOfOneSeg*k != s.length()){
+            System.out.println("NO");
+            sc.close();
+            return;
+        }
+        int pallinCount = 0;
+
+        int i = 0;
+        int seg=0;
+        while(seg<k){
+            String subStr = s.substring(i, i+lenOfOneSeg);
+            if(isPallindrome(subStr))   pallinCount++;
+            i=i+lenOfOneSeg;
+            seg++;
+        }
+
+        if(pallinCount==k)    System.out.println("YES");
+        else System.out.println("NO");
+
+        sc.close();
+
+    }
+
+    private static boolean isPallindrome(String subStr) {
+        String reverse = "";
+        int opp = subStr.length();
+        while(opp>0){
+            reverse = reverse + subStr.charAt(opp-1);
+            opp--;
+        }
+        if(reverse.equals(subStr))  return true;
+        else return false;
+    }
+    
+}
