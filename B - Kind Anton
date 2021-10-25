@@ -1,0 +1,46 @@
+import java.lang.*;
+import java.util.*;
+
+public class Abhishek {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            int[] a = new int[n];
+            int[] b = new int[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = sc.nextInt();
+            }
+            for (int i = 0; i < n; i++) {
+                b[i] = sc.nextInt();
+            }
+            boolean pos = false, neg = false, flag = true;
+
+            for (int i = 0; i < n; i++) {
+                if (a[i] < b[i]) {
+                    if (!pos) {
+                        System.out.println("NO");
+                        flag = false;
+                        break;
+                    }
+                } else if (a[i] > b[i]) {
+                    if (!neg) {
+                        System.out.println("NO");
+                        flag = false;
+                        break;
+                    }
+                }
+                if (a[i] == -1)
+                    neg = true;
+                if (a[i] == 1)
+                    pos = true;
+            }
+            if(flag)
+            System.out.println("YES");
+        }
+
+
+    }
+}
