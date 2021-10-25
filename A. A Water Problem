@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class A_A_Water_Problem {
+
+    static Scanner in=new Scanner(System.in);
+    
+    public static void main(String[] amit) {
+        
+        int n=in.nextInt();
+        
+        for(int i=0;i<n;i++){
+            
+            long x=in.nextLong();
+            
+            char a[]=String.valueOf(x).toCharArray();
+            
+            long sum=0;
+            
+            for(int j=0;j<a.length;j++){
+                
+                sum+=(a[j]-'0');
+                
+            }
+            
+            System.out.println( sum*x );
+            
+        }
+        
+    }
+    
+}
