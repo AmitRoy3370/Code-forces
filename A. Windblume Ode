@@ -1,0 +1,65 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        int t=nextInt();
+        while(t--!=0){
+            int n=nextInt();
+            long[]a=new long[n];
+            long sum=0;
+            int count0=0;
+            int idx=-1;
+            long min=Integer.MAX_VALUE;
+            for (int i = 0; i < n; i++) {
+                a[i]=nextLong();
+                sum+=a[i];
+                if(a[i]%2==0)count0++;
+                else{
+                    if(a[i]<min){min=a[i];idx=i;}
+                }
+            }
+            boolean w=false;
+            for (int i = 2; i <=Math.sqrt(sum) ; i++) {
+                if(sum%i==0){w=true;break;}
+            }
+            if((n-count0)%2==0||w){
+                out.println(n);
+                for (int i = 0; i < n; i++) {
+                    out.print(i+1+" ");
+                }
+            }
+            else{
+                out.println(n-1);
+                for (int i = 0; i < n; i++) {
+                    if(i!=idx)out.print(i+1+" ");
+                }
+            }
+            out.println();
+        }
+        out.close();
+    }
+
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter out = new PrintWriter(System.out);
+    static StringTokenizer in = new StringTokenizer("");
+
+    static String nextToken() throws IOException {
+        while (!in.hasMoreTokens()) {
+            in = new StringTokenizer(br.readLine());
+        }
+        return in.nextToken();
+    }
+
+    static int nextInt() throws IOException {
+        return Integer.parseInt(nextToken());
+    }
+
+    static long nextLong() throws IOException {
+        return Long.parseLong(nextToken());
+    }
+
+    static double nextDouble() throws IOException {
+        return Double.parseDouble(nextToken());
+    }
+}
