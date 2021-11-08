@@ -1,0 +1,24 @@
+
+import java.util.*;
+public class PashmakandGarden
+{
+	public static void main(String[] args)
+	{
+
+		Scanner ini=new Scanner(System.in) ;
+		int a1=ini.nextInt() ;
+		int a2=ini.nextInt() ;
+		int a3=ini.nextInt() ;
+		int a4=ini.nextInt() ;
+		if(a1==a3)
+			System.out.println((a1+a2-a4)+" "+a2+" "+(a1+a2-a4)+" "+a4) ;
+		else if(a2==a4)
+			System.out.println(a1+" "+(a1+a2-a3)+" "+a3+" "+(a1+a2-a3)) ;
+		else if(Math.abs(a1-a3)==Math.abs(a2-a4))
+			System.out.println(a1+" "+a4+" "+a3+" "+a2) ;
+		else 
+			System.out.println(-1) ;
+	
+				
+	}
+}
