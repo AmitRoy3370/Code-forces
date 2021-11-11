@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class cf2
+{
+	static Scanner sc = new Scanner(System.in);
+
+	private static void solve()
+	{
+		int n = sc.nextInt();
+		sc.nextLine();
+		String s = sc.nextLine();
+		int ans = Integer.MAX_VALUE;
+		for(int c=0; c<26; ++c){
+			int l = 0, r=n-1, cnt=0;
+		while(l<=r) {
+			// System.out.println(c);
+			char temp = (char)('a'+c);
+			if(s.charAt(l)==s.charAt(r)) {
+				++l;
+				--r;
+			}
+			else if (s.charAt(l)==temp) {
+				++l;
+				++cnt;
+			}
+			else if(s.charAt(r)==temp) {
+				--r;
+				++cnt;
+			}
+			else {
+				cnt = Integer.MAX_VALUE;
+				break;
+			}
+		}
+			ans = Math.min(ans,cnt);
+		}
+		if(ans != Integer.MAX_VALUE)System.out.println(ans);
+		else System.out.println(-1);
+	}
+	public static void main (String args[])
+	{
+		int t = sc.nextInt();
+		while(t-->0)solve();
+		sc.close();
+	}
+}
