@@ -1,0 +1,65 @@
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    static int testCases,n;
+    static List<Long> list;
+    static long a[];
+    
+    static void solve(){
+        
+     //   Collections.sort(list);
+      
+      list=new ArrayList<>();
+        
+        for(int i=0;i<n;i++){
+            
+            boolean b=i-1>=0?a[i]>a[i-1]:false;
+            boolean c=i+1<=n-1?a[i]<a[i+1]:false;
+            
+            if(i==0 || i==n-1 || ( (b!=c ) ) ){
+                
+                list.add(a[i]);
+                
+            }
+            
+        }
+        
+        System.out.println(list.size() );
+        
+        for(long i: list){
+            
+            System.out.print(i+" ");
+            
+        }
+        
+        System.out.println();
+        
+    }
+    
+    public static void main(String args[]) {
+     
+     testCases=in.nextInt();
+     
+     for(int t=0;t<testCases;t++){
+         
+         n=in.nextInt();
+         
+         a=new long[n];
+         
+         for(int i=0;i<n;i++){
+             
+             a[i]=(in.nextLong() );
+             
+         }
+         
+         solve();
+         
+     }
+     
+    }
+}
