@@ -1,0 +1,70 @@
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static int n,testCases;
+    
+    static List<Integer> a,b;
+    
+    static void solve(){
+        
+        Collections.sort(a);
+        Collections.sort(b);
+        
+        for(int i=0;i<n;i++){
+            
+            if( a.get(i)==b.get(i) ){
+                
+                continue;
+                
+            }
+            
+            if(  a.get(i)+1!=b.get(i) ){
+                
+                System.out.println("NO");
+                
+                return;
+                
+            }
+            
+        }
+        
+        System.out.println("YES");
+        
+    }
+    
+    public static void main(String args[]) {
+     
+     testCases=in.nextInt();
+     
+     for(int t=0;t<testCases;t++){
+         
+         n=in.nextInt();
+         
+         a=new ArrayList<>();
+         
+         b=new ArrayList<>();
+         
+         for(int i=0;i<n;i++){
+             
+             a.add(in.nextInt() );
+             
+         }
+         
+         for(int j=0;j<n;j++){
+             
+             b.add(in.nextInt() );
+             
+         }
+         
+         solve();
+         
+     }
+     
+    }
+}
