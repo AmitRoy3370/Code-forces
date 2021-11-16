@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    
+    public static void main(String args[]) {
+    
+    int s=in.nextInt();
+    int v1=in.nextInt();
+    int v2=in.nextInt();
+    int t1=in.nextInt();
+    int t2=in.nextInt();
+      
+      int first=s*v1+2*t1;
+      int second =s*v2+2*t2;
+      
+      if(first<second){
+          
+          System.out.print("First");
+          
+      }else if(second<first){
+          
+          System.out.print("Second");
+          
+      }else{
+          
+          System.out.print("Friendship");
+          
+      }
+      
+    }
+}
