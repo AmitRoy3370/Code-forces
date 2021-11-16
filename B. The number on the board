@@ -1,0 +1,72 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class MyClass {
+    
+    static Scanner in=new Scanner(System.in);
+    
+    static long k;
+    static char a[];
+    
+    public static void main(String args[]) {
+     
+     k=in.nextLong();
+     
+     a=in.next().toCharArray();
+     
+     long sumHave=0;
+     
+     for(char i: a){
+         
+         sumHave+=(i-'0');
+         
+     }
+     
+     Arrays.sort(a);
+     
+     long ans=0;
+     
+     int len=a.length;
+     
+     while(true){
+         
+         boolean find=false;
+         
+         for(int i=0;i<len;i++ ){
+             
+             if(k>sumHave){
+                 
+                 if( 9-(a[i]-'0')!=0 ){
+                 
+                 ans++;
+                 
+                 sumHave+=(9-(a[i]-'0'));
+                 
+                 a[i]='9';
+                 
+                 }
+                 
+             }else{
+                 
+                 find=true;
+                 
+                 break;
+                 
+             }
+             
+         }
+         
+         if(find){
+             
+             break;
+             
+         }
+         
+     }
+     
+     //System.out.println(new String(a) );
+     
+     System.out.print(ans);
+     
+    }
+}
