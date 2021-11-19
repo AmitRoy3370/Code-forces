@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class SHOVEL{
+
+public static void main (String[]args){
+
+
+Scanner input=new Scanner(System.in);
+String s=input.next();
+
+String a=input.next();
+int k=0;
+for(int i=0;i<a.length()&&k<s.length();i++)
+if(s.charAt(k)==a.charAt(i))
+k++;
+
+System.out.println(k+1);
+}//
+}//
